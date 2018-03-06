@@ -1,0 +1,109 @@
+---
+# Rhel Postvalidation Process
+- name: Creates Directory
+  file: path=/var/log/postvalidation state=directory
+
+- name: Ping
+  local_action: shell ansible -m ping testserver 
+
+- name: PingPing
+  local_action: shell ansible -m ping testserver
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_ping_log}}
+
+- name: Server Uptime
+  shell: uptime > {{post_uptime_log}}
+
+- name: Server Uptime
+  shell: uptime
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_uptime_log}}
+
+- name: clean all yum caches
+  shell: yum clean all
+  register: ps
+
+- debug: var=ps.stdout_lines
+         
+- name: Kernel Version
+  shell: uname -r > {{post_kernel_log}}
+
+- name: Kernel Version
+  shell: uname -r
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_kernel_log}}
+    
+- name: Checking Network Interface
+  shell: ifconfig -a > {{post_interface_log}}
+
+- name: Checking Network Interface
+  shell: ifconfig -a
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_interface_log}}
+
+- name: Routing Point
+  shell: route -n > {{post_route_log}}
+
+- name: Routing Point
+  shell: route -n
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_route_log}}
+
+- name: Check Memory and Swap Resources
+  shell: free -h > {{post_mem_swap_log}}
+
+- name: Check Memory and Swap Resources
+  shell: free -h
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mem_swap_log}}
+
+- name: Check Filesystems and Sizes
+  shell: df -h > {{post_file_system_log}}
+
+- name: Check Filesystems and Sizes
+  shell: df -h
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_file_system_log}}
+
+- name: Check Updates (yum)
+  shell: yum check-update > {{post_update_check_log}} || test $? -eq 100
+
+- name: Check Updates (yum)
+  shell: yum check-update || test $? -eq 100
+  register: yumoutput
+
+- debug: var=yumoutput.stdout_lines
+- local_action: copy content={{ yumoutput.stdout_lines }} dest={{local_post_update_check_log}}
+    
+- name: Fstab Contents File
+  shell: cat /etc/fstab > {{post_fstab_content_log}}
+  become: true
+
+- name: Fstab Contents File
+  shell: cat /etc/fstab
+  register: ps
+  become: true
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_fstab_content_log}}
+
+- name: Mount Point
+  shell: echo $(hostname) for $(date);mount > {{post_mount_log}}
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
