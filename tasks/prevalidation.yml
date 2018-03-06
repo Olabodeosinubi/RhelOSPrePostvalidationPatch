@@ -1,0 +1,141 @@
+---
+# Rhel Postvalidation Process
+- name: Creates Directory
+  file: path=/var/log/prevalidation state=directory
+
+- name: Ping
+  local_action: shell ansible -m ping testserver 
+
+- name: PingPing
+  local_action: shell ansible -m ping testserver
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_ping_log}}
+
+- name: Server Uptime
+  shell: uptime > {{uptime_log}}
+
+- name: Server Uptime
+  shell: uptime > {{uptime_log}}
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_uptime_log}}
+ 
+- name: Routing Point
+  shell: route -n > {{route_log}}
+
+- name: Routing Point
+  shell: route -n > {{route_log}}
+  register: ps
+
+- debug: var=ps.stdout_lines                   
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_route_log}}
+
+- name: OS Version
+  shell: cat /etc/redhat-release > {{version_log}}
+  become: true
+
+- name: OS Version
+  shell: cat /etc/redhat-release > {{version_log}}
+  register: ps
+  become: true
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_version_log}} 
+
+- name: Check Memory and Swap Resources
+  shell: free -h > {{mem_swap_log}}
+
+- name: Check Memory and Swap Resources
+  shell: free -h
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_mem_swap_log}}
+
+- name: Free Disk space
+  shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//' > {{free_disk_log}}
+
+- name: Free Disk space
+  shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//'
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_free_disk_log}}
+
+- name: Used Disk space
+  shell: echo $(hostname) for $(date);df -h | grep -vE 'Filesystem|tmpfs|boot' | awk '{print $4 " " $5}' | while read output; do   echo $output;   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  );   partition=$(echo $output | awk '{ print $2 }' );   if [ "$usep" -ge "90" ]; then     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | mailx -s Alert_Space  hcqis-ops-middleware@hcqis.org hcqis-ops-dba@hcqis.org;  fi; done > {{used_disk_log}}
+
+- name: Used Disk space
+  shell: echo $(hostname) for $(date);df -h | grep -vE 'Filesystem|tmpfs|boot' | awk '{print $4 " " $5}' | while read output; do   echo $output;   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  );   partition=$(echo $output | awk '{ print $2 }' );   if [ "$usep" -ge "90" ]; then     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | mailx -s Alert_Space  hcqis-ops-middleware@hcqis.org hcqis-ops-dba@hcqis.org;  fi; done
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_used_disk_log}}
+
+- name: Check Filesystems and Sizes
+  shell: df -h > {{file_system_log}}
+
+- name: Check Filesystems and Sizes
+  shell: df -h
+  register: ps    
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_file_system_log}}
+
+- name: Fstab Contents File
+  shell: cat /etc/fstab > {{fstab_content_log}}
+  become: true
+
+- name: Fstab Contents File
+  shell: cat /etc/fstab
+  register: ps
+  become: true
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_fstab_content_log}}
+
+- name: Mount Point
+  shell: echo $(hostname) for $(date);mount > {{mount_log}}
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_mount_log}}
+
+- name: Kernel Version
+  shell: uname -r > {{kernel_log}}
+
+- name: Kernel Version
+  shell: uname -r
+  register: ps
+
+- debug: var=ps.stdout_lines
+- local_action: copy content={{ ps.stdout_lines }} dest={{local_kernel_log}}
+
+- name: Check Updates (yum)
+  shell: yum check-update > {{update_check_log}} || test $? -eq 100
+
+- name: Check Updates (yum)
+  shell: yum check-update || test $? -eq 100
+  register: yumoutput
+
+- debug: var=yumoutput.stdout_lines
+- local_action: copy content={{ yumoutput.stdout_lines }} dest={{local_update_check_log}}
+
+- name: Check Last Yum Command Run,  Start , End Date and Installed Packages
+  shell: yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User" > {{last_yumrun_log}}
+
+- name: Check Last Yum Command Run,  Start , End Date and Installed Packages
+  shell: yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User"
+  register: last_yum_command
+
+- debug: var=last_yum_command.stdout_lines
+- local_action: copy content={{ last_yum_command.stdout_lines }} dest={{local_last_yumrun_log}}
+
+- name: clean all yum caches
+  shell: yum clean all
+  register: ps
+
+- debug: var=ps.stdout_lines
