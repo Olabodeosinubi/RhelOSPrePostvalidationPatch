@@ -4,15 +4,12 @@
   file: path=/var/log/prevalidation state=directory
 
 - action: ping 
-  register: ps
-
-- debug: var=ps.stdout_lines
 
 - name: Server Uptime
   shell: uptime > {{uptime_log}}
 
 - name: Server Uptime
-  shell: uptime > {{uptime_log}}
+  shell: uptime
   register: ps
 
 - debug: var=ps.stdout_lines
@@ -21,7 +18,7 @@
   shell: route -n > {{route_log}}
 
 - name: Routing Point
-  shell: route -n > {{route_log}}
+  shell: route -n 
   register: ps
 
 - debug: var=ps.stdout_lines                   
@@ -31,7 +28,7 @@
   become: true
 
 - name: OS Version
-  shell: cat /etc/redhat-release > {{version_log}}
+  shell: cat /etc/redhat-release 
   register: ps
   become: true
 
