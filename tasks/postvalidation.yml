@@ -5,10 +5,6 @@
   file: path=/var/log/postvalidation state=directory
 
 - action: ping 
-  register: ps
-
-- debug: var=ps.stdout_lines
-#- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_ping_log}}
 
 - name: Server Uptime
   shell: uptime > {{post_uptime_log}}
