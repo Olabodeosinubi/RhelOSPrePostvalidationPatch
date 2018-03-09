@@ -4,7 +4,7 @@
   file: path=/var/log/prevalidation state=directory
 
 - name: Ping
-- action: ansible -m ping 
+- action: ping 
   register: ps
 
 - debug: var=ps.stdout_lines
