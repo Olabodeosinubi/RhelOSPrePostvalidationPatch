@@ -3,8 +3,7 @@
 - name: Creates Directory
   file: path=/var/log/prevalidation state=directory
 
-- name: Ping
-- action: ping 
+- action: ansible -m  ping 
   register: ps
 
 - debug: var=ps.stdout_lines
