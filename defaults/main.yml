@@ -1,2 +1,25 @@
 ---
 # defaults file for rhelpostpatch
+post_uptime_log: /var/log/postvalidation/uptime.log
+post_route_log: /var/log/postvalidation/route.log
+post_version_log: /var/log/postvalidation/version.log
+post_mem_swap_log: /var/log/postvalidation/memswap.log
+post_file_system_log: /var/log/postvalidation/filesystemsize.log
+post_fstab_content_log: /var/log/postvalidation/fstabcontent.log
+post_mount_log: /var/log/postvalidation/mount.log
+post_kernel_log: /var/log/postvalidation/kernel.log
+post_update_check_log: /var/log/postvalidation/updatecheck.log
+post_interface_log: /var/log/postvalidation/interface.log
+
+
+#local_post_ping_log: /var/log/localpostvalidation/ping.log
+#local_post_uptime_log: /var/log/localpostvalidation/uptime.log
+#local_post_route_log: /var/log/localpostvalidation/route.log
+#local_post_version_log: /var/log/localpostvalidation/version.log
+#local_post_mem_swap_log: /var/log/localpostvalidation/memswap.log
+#local_post_file_system_log: /var/log/localpostvalidation/filesystemsize.log
+#local_post_fstab_content_log: /var/log/localpostvalidation/fstabcontent.log
+#local_post_mount_log: /var/log/localpostvalidation/mount.log
+#local_post_kernel_log: /var/log/localpostvalidation/kernel.log
+#local_post_update_check_log: /var/log/localpostvalidation/updatecheck.log
+#local_post_interface_log: /var/log/localpostvalidation/interface.log
