@@ -5,18 +5,18 @@
   become_method: sudo
   become_user: oola
       #defaults file for rhelprepatch
-      uptime_log: ~/prevalidation/uptime.log
-      route_log: ~/prevalidation/route.log
-      version_log: ~/prevalidation/version.log
-      mem_swap_log: ~/prevalidation/memswap.log
-      free_disk_log:  ~/prevalidation/freediskspace.log
-      used_disk_log: ~/prevalidation/usediskspace.log
-      file_system_log: ~/prevalidation/filesystemsize.log
-      fstab_content_log: ~/prevalidation/fstabcontent.log
-      mount_log: ~/prevalidation/mount.log
-      kernel_log: ~/prevalidation/kernel.log
-      update_check_log: ~/prevalidation/updatecheck.log
-      last_yumrun_log: ~/prevalidation/lastyumrun.log
+  uptime_log: ~/prevalidation/uptime.log
+  route_log: ~/prevalidation/route.log
+  version_log: ~/prevalidation/version.log
+  mem_swap_log: ~/prevalidation/memswap.log
+  free_disk_log:  ~/prevalidation/freediskspace.log
+  used_disk_log: ~/prevalidation/usediskspace.log
+  file_system_log: ~/prevalidation/filesystemsize.log
+  fstab_content_log: ~/prevalidation/fstabcontent.log
+  mount_log: ~/prevalidation/mount.log
+  kernel_log: ~/prevalidation/kernel.log
+  update_check_log: ~/prevalidation/updatecheck.log
+  last_yumrun_log: ~/prevalidation/lastyumrun.log
   tasks:
     - action: ping 
 
