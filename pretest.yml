@@ -15,7 +15,7 @@
   fstab_content_log: ~/prevalidation/fstabcontent.log
   mount_log: ~/prevalidation/mount.log
   kernel_log: ~/prevalidation/kernel.log
-  update_check_log: ~/prevalidation/updatecheck.log
+  updatecheck_log: ~/prevalidation/updatecheck.log
   last_yumrun_log: ~/prevalidation/lastyumrun.log
   tasks:
     - action: ping 
@@ -119,7 +119,7 @@
     - debug: var=ps.stdout_lines
 
     - name: Check Updates (yum)
-      shell: sudo yum check-update > {{update_check_log}} || test $? -eq 100
+      shell: sudo yum check-update > {{updatecheck_log}} || test $? -eq 100
       become_user: true
 
     - name: Check Updates (yum)
