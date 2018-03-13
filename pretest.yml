@@ -7,14 +7,14 @@
       #defaults file for rhelprepatch
   uptime_log: ~/prevalidation/uptime.log
   route_log: ~/prevalidation/route.log
-  version_log: ~/prevalidation/version.log
+  versioncheck_log: ~/prevalidation/version.log
   mem_swap_log: ~/prevalidation/memswap.log
   free_disk_log:  ~/prevalidation/freediskspace.log
   used_disk_log: ~/prevalidation/usediskspace.log
   file_system_log: ~/prevalidation/filesystemsize.log
   fstab_content_log: ~/prevalidation/fstabcontent.log
-  mount_log: ~/prevalidation/mount.log
-  checkernel_log: ~/prevalidation/kernel.log
+  mountcheck_log: ~/prevalidation/mount.log
+  kernelcheck_log: ~/prevalidation/kernel.log
   updatecheck_log: ~/prevalidation/updatecheck.log
   last_yumrun_log: ~/prevalidation/lastyumrun.log
   tasks:
@@ -45,7 +45,7 @@
 #      become: yes
 #      become_method:  sudo su
 #      become_user: mwadmin
-      shell: cat /etc/redhat-release > {{version_log}}
+      shell: cat /etc/redhat-release > {{versioncheck_log}}
   
     - name: OS Version
      # become: yes
@@ -104,13 +104,13 @@
     - debug: var=ps.stdout_lines
 
     - name: Mount Point
-      shell: echo $(hostname) for $(date);mount > {{mount_log}}
+      shell: echo $(hostname) for $(date);mount > {{mountcheck_log}}
       register: ps
 
     - debug: var=ps.stdout_lines
 
     - name: Kernel Version
-      shell: uname -r > {{checkernel_log}}
+      shell: uname -r > {{kernelcheck_log}}
 
     - name: Kernel Version
       shell: uname -r
