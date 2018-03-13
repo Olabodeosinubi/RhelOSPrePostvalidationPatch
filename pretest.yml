@@ -1,0 +1,149 @@
+---
+# Ansible Play
+- hosts: all
+  become: yes
+  become_method: sudo
+  become_user: oola
+#defaults file for rhelprepatch
+uptime_log: ~/prevalidation/uptime.log
+route_log: ~/prevalidation/route.log
+version_log: ~/prevalidation/version.log
+mem_swap_log: ~/prevalidation/memswap.log
+free_disk_log:  ~/prevalidation/freediskspace.log
+used_disk_log: ~/prevalidation/usediskspace.log
+file_system_log: ~/prevalidation/filesystemsize.log
+fstab_content_log: ~/prevalidation/fstabcontent.log
+mount_log: ~/prevalidation/mount.log
+kernel_log: ~/prevalidation/kernel.log
+update_check_log: ~/prevalidation/updatecheck.log
+last_yumrun_log: ~/prevalidation/lastyumrun.log
+  tasks:
+#Rhel Postvalidation Process
+    - action: ping 
+
+    - name: Creates Directory
+      file: path=~/prevalidation state=directory
+
+    - name: Server Uptime
+      shell: uptime > {{uptime_log}}
+
+    - name: Server Uptime
+      shell: uptime
+      register: ps
+
+    - debug: var=ps.stdout_lines
+ 
+    - name: Routing Point
+      shell: netstat -rn > {{route_log}}
+
+    - name: Routing Point
+      shell: netstat -rn 
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: OS Version
+#      become: yes
+#      become_method:  sudo su
+#      become_user: mwadmin
+      shell: cat /etc/redhat-release > {{version_log}}
+  
+    - name: OS Version
+     # become: yes
+    #  become_method: sudo su
+    #  become_user: mwadmin
+      shell: cat /etc/redhat-release
+      register: ps
+  
+    - debug: var=ps.stdout_lines
+
+    - name: Check Memory and Swap Resources
+      shell: free -h > {{mem_swap_log}}
+
+    - name: Check Memory and Swap Resources
+      shell: free -h
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: Free Disk space
+      shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//' > {{free_disk_log}}
+
+    - name: Free Disk space
+      shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//'
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: Used Disk space
+      shell: echo $(hostname) for $(date);df -h | grep -vE 'Filesystem|tmpfs|boot' | awk '{print $4 " " $5}' | while read output; do   echo $output;   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  );   partition=$(echo $output | awk '{ print $2 }' );   if [ "$usep" -ge "90" ]; then     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | mailx -s Alert_Space  hcqis-ops-middleware@hcqis.org hcqis-ops-dba@hcqis.org;  fi; done > {{used_disk_log}}
+
+    - name: Used Disk space
+      shell: echo $(hostname) for $(date);df -h | grep -vE 'Filesystem|tmpfs|boot' | awk '{print $4 " " $5}' | while read output; do   echo $output;   usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  );   partition=$(echo $output | awk '{ print $2 }' );   if [ "$usep" -ge "90" ]; then     echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" | mailx -s Alert_Space  hcqis-ops-middleware@hcqis.org hcqis-ops-dba@hcqis.org;  fi; done
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: Check Filesystems and Sizes
+      shell: df -h > {{file_system_log}}
+
+    - name: Check Filesystems and Sizes
+      shell: df -h
+      register: ps    
+
+    - debug: var=ps.stdout_lines
+
+    - name: Fstab Contents File
+      shell: cat /etc/fstab > {{fstab_content_log}}
+      become_user: true
+
+    - name: Fstab Contents File
+      shell: cat /etc/fstab
+      register: ps
+      become_user: true
+
+    - debug: var=ps.stdout_lines
+
+    - name: Mount Point
+      shell: echo $(hostname) for $(date);mount > {{mount_log}}
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: Kernel Version
+      shell: uname -r > {{kernel_log}}
+
+    - name: Kernel Version
+      shell: uname -r
+      register: ps
+
+    - debug: var=ps.stdout_lines
+
+    - name: Check Updates (yum)
+      shell: sudo yum check-update > {{update_check_log}} || test $? -eq 100
+      become_user: true
+
+    - name: Check Updates (yum)
+      shell: sudo yum check-update || test $? -eq 100
+      become_user: true
+      register: yumoutput
+
+    - debug: var=yumoutput.stdout_lines
+
+    - name: Check Last Yum Command Run,  Start , End Date and Installed Packages
+      shell: sudo yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User" > {{last_yumrun_log}}
+      become_user: true
+  
+    - name: Check Last Yum Command Run,  Start , End Date and Installed Packages
+      shell: sudo yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User"
+      become_user: true
+      register: last_yum_command
+
+    - debug: var=last_yum_command.stdout_lines
+
+    - name: clean all yum caches
+      shell: sudo yum clean all
+      become_user: true
+      register: ps
+
+    - debug: var=ps.stdout_lines
