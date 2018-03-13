@@ -14,7 +14,7 @@
   file_system_log: ~/prevalidation/filesystemsize.log
   fstab_content_log: ~/prevalidation/fstabcontent.log
   mount_log: ~/prevalidation/mount.log
-  kernel_log: ~/prevalidation/kernel.log
+  checkernel_log: ~/prevalidation/kernel.log
   updatecheck_log: ~/prevalidation/updatecheck.log
   last_yumrun_log: ~/prevalidation/lastyumrun.log
   tasks:
@@ -110,7 +110,7 @@
     - debug: var=ps.stdout_lines
 
     - name: Kernel Version
-      shell: uname -r > {{kernel_log}}
+      shell: uname -r > {{checkernel_log}}
 
     - name: Kernel Version
       shell: uname -r
