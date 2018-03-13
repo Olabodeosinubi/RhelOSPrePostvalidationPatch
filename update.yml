@@ -1,0 +1,38 @@
+---
+- name: update ansible role
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: oola 
+
+  tasks:
+   
+    - name: Check Updates (yum)
+      shell: /usr/bin/yum info #check-update > || test $? -eq 100
+
+    - name: Check Updates (yum)
+      shell: yum check-update || test $? -eq 100
+      register: yumoutput
+
+    - debug: var=yumoutput.stdout_lines
+ 
+    - name: OS Version
+      shell: cat /etc/redhat-release 
+      become: true
+
+    - name: OS Version
+      shell: cat /etc/redhat-release 
+      register: ps
+      become: true
+
+    - debug: var=ps.stdout_lines
+
+
+#  - name: check for updates (yum)
+   #   yum: 
+    #    list=updates > /var/log/updatecheck.log
+        #update_cache=true
+     # register: yomoutput 
+
+    #- debug: ver=yumoutput
+    #{{update_check_log}}
