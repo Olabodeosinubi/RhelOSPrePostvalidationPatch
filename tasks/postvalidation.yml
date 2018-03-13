@@ -14,7 +14,7 @@
   register: ps
 
 - debug: var=ps.stdout_lines
-- action: copy content={{ ps.stdout_lines }} dest={{local_post_uptime_log}}
+#- action: copy content={{ ps.stdout_lines }} dest={{local_post_uptime_log}}
 
 - name: clean all yum caches
   shell: yum clean all
