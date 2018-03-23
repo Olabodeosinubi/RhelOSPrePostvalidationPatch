@@ -101,29 +101,29 @@
 - debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
 
-- name: Creates Directory
-  file: path=/var/log/allprevalidation state=directory
+#- name: Creates Directory
+#  file: path=/var/log/allprevalidation state=directory
 
-- name: Creates Directory
-  file: path=/var/log/allpostvalidation state=directory
+#- name: Creates Directory
+#  file: path=/var/log/allpostvalidation state=directory
 
 - name: Diff Log
   shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
 
-- name: Diff Log
-  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
-  register: ps
+#- name: Diff Log
+#  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
+#  register: ps
 
-- debug: var=ps.stdout_lines
+#- debug: var=ps.stdout_lines
 
 - name: Diff Log
   shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' > /var/log/postvalidation/postlog.txt
 
-- name: Diff Log
-  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' 
-  register: ps
+#- name: Diff Log
+#  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' 
+#  register: ps
 
-- debug: var=ps.stdout_lines
+#- debug: var=ps.stdout_lines
 
 #- name: Diff Log
 #  shell: for a in $(cat prelog.txt) do
