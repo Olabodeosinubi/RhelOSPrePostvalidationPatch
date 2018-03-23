@@ -105,19 +105,19 @@
   shell: ls -alrt ~/prevalidation/*.log | awk '{print $9}' > prelog.txt
 
 - name: Diff Log
-  shell: ls -alrt ~/prevalidation/*.log | awk '{print $9}' > prelog.txt
+  shell: ls -alrt ~/prevalidation/*.log | awk '{print $9}' 
   register: ps
 
-- degug: var=ps.stdout_lines
+- debug: var=ps.stdout_lines
 
 - name: Diff Log
   shell: ls -alrt ~/postvalidation/*.log | awk '{print $9}' > postlog.txt
 
 - name: Diff Log
-  shell: ls -alrt ~/postvalidation/*.log | awk '{print $9}' > postlog.txt
+  shell: ls -alrt ~/postvalidation/*.log | awk '{print $9}' 
   register: ps
 
-- degug: var=ps.stdout_lines
+- debug: var=ps.stdout_lines
 
 #- name: Diff Log
 #  shell: for a in $(cat prelog.txt) do
