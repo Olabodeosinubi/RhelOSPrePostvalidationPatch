@@ -101,8 +101,14 @@
 - debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
 
+- name: Creates Directory
+  file: path=/var/log/allprevalidation state=directory
+
+- name: Creates Directory
+  file: path=/var/log/allpostvalidation state=directory
+
 - name: Diff Log
-  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/allprevalidation/Prelog.txt
+  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/allprevalidation/prelog.txt
 
 - name: Diff Log
   shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
