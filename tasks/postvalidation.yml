@@ -108,7 +108,7 @@
   file: path=/var/log/allpostvalidation state=directory
 
 - name: Diff Log
-  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/allprevalidation/prelog.txt
+  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
 
 - name: Diff Log
   shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
