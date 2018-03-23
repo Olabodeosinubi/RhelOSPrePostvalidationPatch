@@ -102,19 +102,19 @@
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
 
 - name: Diff Log
-  shell: ls -alrt ~/prevalidation/*.log | awk '{print $9}' > prelog.txt
+  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/allprevalidation/Prelog.txt
 
 - name: Diff Log
-  shell: ls -alrt ~/prevalidation/*.log | awk '{print $9}' 
+  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
   register: ps
 
 - debug: var=ps.stdout_lines
 
 - name: Diff Log
-  shell: ls -alrt ~/postvalidation/*.log | awk '{print $9}' > postlog.txt
+  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' > /var/log/postvalidation/postlog.txt
 
 - name: Diff Log
-  shell: ls -alrt ~/postvalidation/*.log | awk '{print $9}' 
+  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' 
   register: ps
 
 - debug: var=ps.stdout_lines
