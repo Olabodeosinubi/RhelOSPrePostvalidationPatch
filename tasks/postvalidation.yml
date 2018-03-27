@@ -107,8 +107,8 @@
 #- name: Creates Directory
 #  file: path=/var/log/allpostvalidation state=directory
 
-- name: Diff Log
-  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
+#- name: Diff Log
+#  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
 
 #- name: Diff Log
 #  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
@@ -116,8 +116,13 @@
 
 #- debug: var=ps.stdout_lines
 
-- name: Diff Log
-  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' > /var/log/postvalidation/postlog.txt
+- name: Kernel version Diff
+  shell: grep "uname -r" {{kernel_log}} > /var/log/prevalidation/kernel.tmp.log; grep "uname -r" {{post_kernel_log}} > /var/log/postvalidation/postkernel.tmp.log; diff kernel.tmp.log postkernel.tmp.log > diff kernel.log; rm /var/log/prevalidation/*.tmp.log
+  register: ps
+
+- debug: var=ps.stdout_lines
+
+
 
 #- name: Diff Log
 #  shell: ls -alrt /var/log/postvalidation/*.log | awk '{print $9}' 
