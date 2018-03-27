@@ -7,6 +7,7 @@ post_mem_swap_log: /var/log/postvalidation/memswap.log
 post_file_system_log: /var/log/postvalidation/filesystemsize.log
 post_fstab_content_log: /var/log/postvalidation/fstabcontent.log
 post_mount_log: /var/log/postvalidation/mount.log
+kernel_log: /var/log/prevalidation/kernel.log
 post_kernel_log: /var/log/postvalidation/kernel.log
 post_update_check_log: /var/log/postvalidation/updatecheck.log
 post_interface_log: /var/log/postvalidation/interface.log

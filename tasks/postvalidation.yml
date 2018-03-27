@@ -104,8 +104,8 @@
 #- name: Creates Directory
 #  file: path=/var/log/allprevalidation state=directory
 
-#- name: Creates Directory
-#  file: path=/var/log/allpostvalidation state=directory
+- name: Creates Directory
+  file: path=/var/log/diffvalidation state=directory
 
 #- name: Diff Log
 #  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
@@ -117,7 +117,7 @@
 #- debug: var=ps.stdout_lines
 
 - name: Kernel version Diff
-  shell: grep "uname -r" {{kernel_log}} > /var/log/prevalidation/kernel.tmp.log; grep "uname -r" {{post_kernel_log}} > /var/log/postvalidation/postkernel.tmp.log; diff kernel.tmp.log postkernel.tmp.log > diff kernel.log; rm /var/log/prevalidation/*.tmp.log
+  shell: grep "uname -r" {{kernel_log}} > /var/log/prevalidation/kernel.tmp.log; grep "uname -r" {{post_kernel_log}} > /var/log/postvalidation/postkernel.tmp.log; diff /var/log/prevalidation/kernel.tmp.log /var/log/postvalidation/postkernel.tmp.log > diff /var/log/diffvalidation/kernel.log; rm /var/log/prevalidation/*.tmp.log rm /var/log/postvalidation/*.tmp.log
   register: ps
 
 - debug: var=ps.stdout_lines
