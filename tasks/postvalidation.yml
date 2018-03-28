@@ -113,26 +113,15 @@
 - debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
 
-#- name: Creates Directory
-#  file: path=/var/log/allprevalidation state=directory
-
 - name: Creates Directory
   file: path=/mnt/nfs/var/nfsshare/diffvalidation state=directory
 
-#- name: Diff Log
-#  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
 
-#- name: Diff Log
-#  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' 
-#  register: ps
+- name: Kernel version Diff
+  shell: echo $(hostname) for $(date);grep "java version" {{javaversion_log}} > /home/prevalidation/javaversion.tmp.log;echo $(hostname) for $(date);grep "java version" {{post_javaversio_log}} > /home/postvalidation/javaversionp.tmp.log;diff /home/prevalidation/javaversion.tmp.log /home/postvalidation/javaversionp.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/javaversiondiff.log;rm /home/prevalidation/*.tmp.log rm /home/postvalidation/*.tmp.log
+  register: ps
 
-#- debug: var=ps.stdout_lines
-
-#- name: Kernel version Diff
- # shell: echo $(hostname) for $(date);grep "uname -r" {{kernel_log}} > /home/prevalidation/kernel.tmp.log;echo $(hostname) for $(date);grep "uname -r" {{post_kernel_log}} > /home/postvalidation/postkernel.tmp.log;diff /home/prevalidation/kernel.tmp.log /home/postvalidation/postkernel.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/kernel.log; rm /home/prevalidation/*.tmp.log rm /home/postvalidation/*.tmp.log
-#  register: ps
-
-#- debug: var=ps.stdout_lines
+- debug: var=ps.stdout_lines
 
 
 
