@@ -2,7 +2,7 @@
 # Rhel Postvalidation Process
 # uncomment the local_action: if you are running this playbook on cli.
 - name: Creates Directory
-  file: path=/mnt/nfs/home/postvalidation state=directory
+  file: path=/mnt/nfs/var/nfsshare/postvalidation state=directory
 
 - action: ping 
 
@@ -105,7 +105,7 @@
 #  file: path=/var/log/allprevalidation state=directory
 
 - name: Creates Directory
-  file: path=/mnt/nfs/home/diffvalidation state=directory
+  file: path=/mnt/nfs/var/nfsshare/diffvalidation state=directory
 
 #- name: Diff Log
 #  shell: ls -alrt /var/log/prevalidation/*.log | awk '{print $9}' > /var/log/prevalidation/prelog.txt
@@ -117,7 +117,7 @@
 #- debug: var=ps.stdout_lines
 
 #- name: Kernel version Diff
- # shell: grep "uname -r" {{kernel_log}} > /mnt/nfs/home/prevalidation/kernel.tmp.log; grep "uname -r" {{post_kernel_log}} > /mnt/nfs/home/postvalidation/postkernel.tmp.log; diff /mnt/nfs/home/prevalidation/kernel.tmp.log /mnt/nfs/home/postvalidation/postkernel.tmp.log > diff /mnt/nfs/home/diffvalidation/kernel.log; rm /mnt/nfs/home/prevalidation/*.tmp.log rm /mnt/nfs/home/postvalidation/*.tmp.log
+ # shell: grep "uname -r" {{kernel_log}} > /mnt/nfs/var/nfsshare/prevalidation/kernel.tmp.log; grep "uname -r" {{post_kernel_log}} > /mnt/nfs/var/nfsshare/postvalidation/postkernel.tmp.log; diff /mnt/nfs/var/nfsshare/prevalidation/kernel.tmp.log /mnt/nfs/var/nfsshare/postvalidation/postkernel.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/kernel.log; rm /mnt/nfs/var/nfsshare/prevalidation/*.tmp.log rm /mnt/nfs/var/nfsshare/postvalidation/*.tmp.log
 #  register: ps
 
 #- debug: var=ps.stdout_lines
