@@ -1,7 +1,7 @@
 ---
 # Rhel Postvalidation Process
 - name: Creates Directory
-  file: path=/mnt/nfs/var/nfsshare/prevalidation state=directory
+  file: path=/home/prevalidation state=directory
 
 - action: ping 
 
