@@ -128,7 +128,7 @@
   file: path=/mnt/nfs/var/nfsshare/diffvalidation state=directory
 
 - name: Creates Diff-Dir
-  file: path=/home/diffdir
+  file: path=/home/diffdir state=directory
 
 - name: OS version Diff1
   shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/diffdir/version.tmp.log
