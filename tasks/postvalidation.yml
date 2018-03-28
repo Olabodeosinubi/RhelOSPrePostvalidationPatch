@@ -114,14 +114,14 @@
 
 #- debug: var=ps.stdout_lines
 
-#- name: Java Version
-#  shell: echo $(hostname) for $(date);java -version > {{post_javaversion_log}}
+- name: Java Version
+  shell: echo $(hostname) for $(date);java -version > {{post_javaversion_log}}
 
-#- name: Java Version
-#  shell: echo $(hostname) for $(date);java -version 2>&1
-#  register: ps
+- name: Java Version
+  shell: echo $(hostname) for $(date);java -version 2>&1
+  register: ps
 
-#- debug: var=ps.stdout_lines
+- debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_mount_log}}
 
 #- name: Creates Directory
@@ -131,13 +131,16 @@
 #  file: path=/home/diffdir state=directory
 
 - name: OS version Diff1
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/diffdir/version.tmp.log
+  shell: echo $(hostname) for $(date);grep "java version" {{javaversion_log}} > /home/diffdir/version.tmp.log
 
 - name: OS Version Diff2
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/diffdir/versionp.tmp.log
+  shell: echo $(hostname) for $(date);grep "java version" {{post_javaversion_log}} > /home/diffdir/versionp.tmp.log
 
 - name: OS Version Diff
   shell: echo $(hostname) for $(date);diff -p /home/diffdir/version.tmp.log /home/diffdir/versionp.tmp.log >> /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
+
+- name: OS Version Diff
+  shell: echo $(hostname) for $(date);diff -p /home/diffdir/version.tmp.log /home/diffdir/versionp.tmp.log
   register: ps
 
 - debug: var=ps.stdout_lines
