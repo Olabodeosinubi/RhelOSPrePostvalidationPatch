@@ -12,6 +12,7 @@ post_kernel_log: /home/postvalidation/kernel.log
 post_update_check_log: /home/postvalidation/updatecheck.log
 post_interface_log: /home/postvalidation/interface.log
 post_javaversion_log: /home/postvalidation/javaversion.log
+javaversion_log: /home/prevalidation/javaversion.log
 version_log: /home/prevalidation/version.log
 
 
