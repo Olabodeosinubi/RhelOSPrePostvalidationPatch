@@ -53,14 +53,14 @@
 - debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_interface_log}}
 
-- name: Routing Point
-  shell: echo $(hostname) for $(date);route -n > {{post_route_log}}
+#- name: Routing Point
+#  shell: echo $(hostname) for $(date);route -n > {{post_route_log}}
 
-- name: Routing Point
-  shell: echo $(hostname) for $(date);route -n
-  register: ps
+#- name: Routing Point
+#  shell: echo $(hostname) for $(date);route -n
+#  register: ps
 
-- debug: var=ps.stdout_lines
+#- debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_route_log}}
 
 - name: Check Memory and Swap Resources
