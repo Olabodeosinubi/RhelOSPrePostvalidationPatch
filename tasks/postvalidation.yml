@@ -135,7 +135,7 @@
   shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/postvalidation/versionp.tmp.log
 
 - name: OS Version Diff
-  shell: diff /home/prevalidation/version.tmp.log /home/postvalidation/versionp.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
+  shell: diff /home/prevalidation/version.tmp.log /home/postvalidation/versionp.tmp.log > /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
 
 - name: Remove files
   shell: rm /home/prevalidation/*.tmp.log;rm /home/postvalidation/*.tmp.log
