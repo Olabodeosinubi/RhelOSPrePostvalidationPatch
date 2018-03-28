@@ -6,7 +6,7 @@
 - action: ping 
 
 - name: Java Version
-  shell: echo $(hostname) for $(date);java -version 2>&1 > {{javaversion_log}}
+  shell: echo $(hostname) for $(date);java -version > {{javaversion_log}}
 
 - name: Java Version
   shell: echo $(hostname) for $(date);java -version 2>&1
