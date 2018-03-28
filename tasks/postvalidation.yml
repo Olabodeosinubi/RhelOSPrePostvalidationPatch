@@ -127,16 +127,18 @@
 - name: Creates Directory
   file: path=/mnt/nfs/var/nfsshare/diffvalidation state=directory
 
+- name: Creates Diff-Dir
+  file: path=/home/diffdir
 
 - name: OS version Diff1
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/prevalidation/version.tmp.log
+  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/diffdir/version.tmp.log
 
 - name: OS Version Diff2
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/postvalidation/versionp.tmp.log
+  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/diffdir/versionp.tmp.log
 
 - name: OS Version Diff
-  shell: diff /home/prevalidation/version.tmp.log /home/postvalidation/versionp.tmp.log > /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
+  shell: diff /home/diffdir/version.tmp.log /home/diffdir/versionp.tmp.log > /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
 
-- name: Remove files
-  shell: rm /home/prevalidation/*.tmp.log;rm /home/postvalidation/*.tmp.log
+#- name: Remove files
+#  shell: rm /home/prevalidation/*.tmp.log;rm /home/postvalidation/*.tmp.log
 
