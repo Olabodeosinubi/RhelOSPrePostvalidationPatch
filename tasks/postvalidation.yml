@@ -138,7 +138,9 @@
 
 - name: OS Version Diff
   shell: echo $(hostname) for $(date);diff /home/diffdir/version.tmp.log /home/diffdir/versionp.tmp.log >> /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
+  register: ps
 
+- debug: var=ps.stdout_lines
 #- name: Remove files
 #  shell: rm /home/prevalidation/*.tmp.log;rm /home/postvalidation/*.tmp.log
 
