@@ -129,7 +129,14 @@
 
 
 - name: OS version Diff
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/prevalidation/version.tmp.log;echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/postvalidation/versionp.tmp.log;diff /home/prevalidation/version.tmp.log /home/postvalidation/versionp.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log;rm /home/prevalidation/*.tmp.log rm /home/postvalidation/*.tmp.log
-  register: ps
+  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/prevalidation/version.tmp.log;
 
-- debug: var=ps.stdout_lines
+- name: OS Version Diff2
+  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/postvalidation/versionp.tmp.log
+
+- name: OS Version Diff
+  shell: diff /home/prevalidation/version.tmp.log /home/postvalidation/versionp.tmp.log > diff /mnt/nfs/var/nfsshare/diffvalidation/versiondiff.log
+
+- name: Remove files
+  shell: rm /home/prevalidation/*.tmp.log;rm /home/postvalidation/*.tmp.log
+

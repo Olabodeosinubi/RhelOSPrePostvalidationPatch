@@ -13,7 +13,7 @@ post_update_check_log: /home/postvalidation/updatecheckp.log
 post_interface_log: /home/postvalidation/interfacep.log
 post_javaversion_log: /home/postvalidation/javaversionp.log
 post_version_log: /home/postvalidation/versionp.log
-version_log: /home/postvalidation/version.log
+version_log: /home/prevalidation/version.log
 
 
 #local_post_ping_log: /var/log/localpostvalidation/ping.log
