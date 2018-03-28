@@ -1,16 +1,16 @@
 ---
 # defaults file for rhelpostpatch
-post_uptime_log: /var/log/postvalidation/uptime.log
-post_route_log: /var/log/postvalidation/route.log
-post_version_log: /var/log/postvalidation/version.log
-post_mem_swap_log: /var/log/postvalidation/memswap.log
-post_file_system_log: /var/log/postvalidation/filesystemsize.log
-post_fstab_content_log: /var/log/postvalidation/fstabcontent.log
-post_mount_log: /var/log/postvalidation/mount.log
-kernel_log: /var/log/prevalidation/kernel.log
-post_kernel_log: /var/log/postvalidation/kernel.log
-post_update_check_log: /var/log/postvalidation/updatecheck.log
-post_interface_log: /var/log/postvalidation/interface.log
+post_uptime_log: /mnt/nfs/home/postvalidation/uptime.log
+post_route_log: /mnt/nfs/home/postvalidation/route.log
+post_version_log: /mnt/nfs/home/postvalidation/version.log
+post_mem_swap_log: /mnt/nfs/home/postvalidation/memswap.log
+post_file_system_log: /mnt/nfs/home/postvalidation/filesystemsize.log
+post_fstab_content_log: /mnt/nfs/home/postvalidation/fstabcontent.log
+post_mount_log: /mnt/nfs/home/postvalidation/mount.log
+kernel_log: /mnt/nfs/home/prevalidation/kernel.log
+post_kernel_log: /mnt/nfs/home/postvalidation/kernel.log
+post_update_check_log: /mnt/nfs/home/postvalidation/updatecheck.log
+post_interface_log: /mnt/nfs/home/postvalidation/interface.log
 
 
 #local_post_ping_log: /var/log/localpostvalidation/ping.log
