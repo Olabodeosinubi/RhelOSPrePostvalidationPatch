@@ -128,8 +128,8 @@
   file: path=/mnt/nfs/var/nfsshare/diffvalidation state=directory
 
 
-- name: OS version Diff
-  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/prevalidation/version.tmp.log;
+- name: OS version Diff1
+  shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{version_log}} > /home/prevalidation/version.tmp.log
 
 - name: OS Version Diff2
   shell: echo $(hostname) for $(date);grep "CentOS Linux release" {{post_version_log}} > /home/postvalidation/versionp.tmp.log
