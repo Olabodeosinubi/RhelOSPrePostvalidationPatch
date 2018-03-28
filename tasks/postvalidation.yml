@@ -104,10 +104,10 @@
 - debug: var=ps.stdout_lines
 
 - name: Java Version
-  shell: echo $(hostname) for $(date);java -version > {{post_javaversion_log}}
+  shell: echo $(hostname) for $(date);java -version 2>&1 > {{post_javaversion_log}}
 
 - name: Java Version
-  shell: echo $(hostname) for $(date);java -version
+  shell: echo $(hostname) for $(date);java -version 2>&1
   register: ps
 
 - debug: var=ps.stdout_lines
