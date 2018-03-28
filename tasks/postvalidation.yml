@@ -16,6 +16,17 @@
 - debug: var=ps.stdout_lines
 #- action: copy content={{ ps.stdout_lines }} dest={{local_post_uptime_log}}
 
+- name: OS Version
+  shell: echo $(hostname) for $(date);cat /etc/redhat-release > {{post_version_log}}
+  become: true
+
+- name: OS Version
+  shell: echo $(hostname) for $(date);cat /etc/redhat-release
+  register: ps
+  become: true
+
+- debug: var=ps.stdout_lines
+
 - name: clean all yum caches
   shell: echo $(hostname) for $(date);yum clean all
   register: ps
