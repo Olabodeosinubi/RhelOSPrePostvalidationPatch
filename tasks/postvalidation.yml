@@ -43,14 +43,14 @@
 - debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_kernel_log}}
     
-- name: Checking Network Interface
-  shell: echo $(hostname) for $(date);ifconfig -a > {{post_interface_log}}
+#- name: Checking Network Interface
+#  shell: echo $(hostname) for $(date);ifconfig -a > {{post_interface_log}}
 
-- name: Checking Network Interface
-  shell: echo $(hostname) for $(date);ifconfig -a
-  register: ps
+#- name: Checking Network Interface
+#  shell: echo $(hostname) for $(date);ifconfig -a
+#  register: ps
 
-- debug: var=ps.stdout_lines
+#- debug: var=ps.stdout_lines
 #- local_action: copy content={{ ps.stdout_lines }} dest={{local_post_interface_log}}
 
 #- name: Routing Point
