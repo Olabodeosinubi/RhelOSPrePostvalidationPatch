@@ -1,16 +1,17 @@
 ---
 # defaults file for rhelpostpatch
-post_uptime_log: /home/postvalidation/uptime.log
-post_route_log: /home/postvalidation/route.log
-post_version_log: /home/postvalidation/version.log
-post_mem_swap_log: /home/postvalidation/memswap.log
-post_file_system_log: /home/postvalidation/filesystemsize.log
-post_fstab_content_log: /home/postvalidation/fstabcontent.log
-post_mount_log: /home/postvalidation/mount.log
+post_uptime_log: /home/postvalidation/uptimep.log
+post_route_log: /home/postvalidation/routep.log
+post_version_log: /home/postvalidation/versionp.log
+post_mem_swap_log: /home/postvalidation/memswapp.log
+post_file_system_log: /home/postvalidation/filesystemsizep.log
+post_fstab_content_log: /home/postvalidation/fstabcontentp.log
+post_mount_log: /home/postvalidation/mountp.log
 kernel_log: /home/prevalidation/kernel.log
-post_kernel_log: /home/postvalidation/kernel.log
-post_update_check_log: /home/postvalidation/updatecheck.log
-post_interface_log: /home/postvalidation/interface.log
+post_kernel_log: /home/postvalidation/kernelp.log
+post_update_check_log: /home/postvalidation/updatecheckp.log
+post_interface_log: /home/postvalidation/interfacep.log
+post_javaversion_log: /home/postvalidation/javaversionp.log
 
 
 #local_post_ping_log: /var/log/localpostvalidation/ping.log
