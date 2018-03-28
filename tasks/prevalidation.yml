@@ -5,49 +5,58 @@
 
 - action: ping 
 
-- name: Server Uptime
-  shell: uptime > {{uptime_log}}
+- name: Java Version
+  shell: echo $(hostname) for $(date);java -version > {{javaversion_log}}
+
+- name: Java Version
+  shell: echo $(hostname) for $(date);java -version
+  register: ps
+
+- debug: var=ps.stdout_lines
 
 - name: Server Uptime
-  shell: uptime
+  shell: echo $(hostname) for $(date);uptime > {{uptime_log}}
+
+- name: Server Uptime
+  shell: echo $(hostname) for $(date);uptime
   register: ps
 
 - debug: var=ps.stdout_lines
  
 - name: Routing Point
-  shell: route -n > {{route_log}}
+  shell: echo $(hostname) for $(date);route -n > {{route_log}}
 
 - name: Routing Point
-  shell: route -n 
+  shell: echo $(hostname) for $(date);route -n 
   register: ps
 
 - debug: var=ps.stdout_lines                   
 
 - name: OS Version
-  shell: cat /etc/redhat-release > {{version_log}}
+  shell: echo $(hostname) for $(date);cat /etc/redhat-release > {{version_log}}
   become: true
 
 - name: OS Version
-  shell: cat /etc/redhat-release 
+  shell: echo $(hostname) for $(date);cat /etc/redhat-release 
   register: ps
   become: true
 
 - debug: var=ps.stdout_lines
 
 - name: Check Memory and Swap Resources
-  shell: free -h > {{mem_swap_log}}
+  shell: echo $(hostname) for $(date);free -h > {{mem_swap_log}}
 
 - name: Check Memory and Swap Resources
-  shell: free -h
+  shell: echo $(hostname) for $(date);free -h
   register: ps
 
 - debug: var=ps.stdout_lines
 
 - name: Free Disk space
-  shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//' > {{free_disk_log}}
+  shell: echo $(hostname) for $(date);df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//' > {{free_disk_log}}
 
 - name: Free Disk space
-  shell: df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//'
+  shell: echo $(hostname) for $(date);df -Pl|grep '^/dev'|awk '{print $6, 100 - $5}'|sed 's/%//'
   register: ps
 
 - debug: var=ps.stdout_lines
@@ -62,20 +71,20 @@
 - debug: var=ps.stdout_lines
 
 - name: Check Filesystems and Sizes
-  shell: df -h > {{file_system_log}}
+  shell: echo $(hostname) for $(date);df -h > {{file_system_log}}
 
 - name: Check Filesystems and Sizes
-  shell: df -h
+  shell: echo $(hostname) for $(date);df -h
   register: ps    
 
 - debug: var=ps.stdout_lines
 
 - name: Fstab Contents File
-  shell: cat /etc/fstab > {{fstab_content_log}}
+  shell: echo $(hostname) for $(date);cat /etc/fstab > {{fstab_content_log}}
   become: true
 
 - name: Fstab Contents File
-  shell: cat /etc/fstab
+  shell: echo $(hostname) for $(date);cat /etc/fstab
   register: ps
   become: true
 
@@ -83,39 +92,42 @@
 
 - name: Mount Point
   shell: echo $(hostname) for $(date);mount > {{mount_log}}
+
+- name: Mount Point
+  shell: echo $(hostname) for $(date);mount
   register: ps
 
 - debug: var=ps.stdout_lines
 
 - name: Kernel Version
-  shell: uname -r > {{kernel_log}}
+  shell: echo $(hostname) for $(date);uname -r > {{kernel_log}}
 
 - name: Kernel Version
-  shell: uname -r
+  shell: echo $(hostname) for $(date);uname -r
   register: ps
 
 - debug: var=ps.stdout_lines
 
 - name: Check Updates (yum)
-  shell: yum check-update > {{update_check_log}} || test $? -eq 100
+  shell: echo $(hostname) for $(date);yum check-update > {{update_check_log}} || test $? -eq 100
 
 - name: Check Updates (yum)
-  shell: yum check-update || test $? -eq 100
+  shell: echo $(hostname) for $(date);yum check-update || test $? -eq 100
   register: yumoutput
 
 - debug: var=yumoutput.stdout_lines
 
 - name: Check Last Yum Command Run,  Start , End Date and Installed Packages
-  shell: yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User" > {{last_yumrun_log}}
+  shell: echo $(hostname) for $(date);yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User" > {{last_yumrun_log}}
 
 - name: Check Last Yum Command Run,  Start , End Date and Installed Packages
-  shell: yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User"
+  shell: echo $(hostname) for $(date);yum history info | grep -e "Begin time" -e "Command Line" -e "Installed" -e "User"
   register: last_yum_command
 
 - debug: var=last_yum_command.stdout_lines
 
 - name: clean all yum caches
-  shell: yum clean all
+  shell: echo $(hostname) for $(date);yum clean all
   register: ps
 
 - debug: var=ps.stdout_lines

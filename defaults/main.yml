@@ -12,6 +12,7 @@ mount_log: /home/prevalidation/mount.log
 kernel_log: /home/prevalidation/kernel.log
 update_check_log: /home/prevalidation/updatecheck.log
 last_yumrun_log: /home/prevalidation/lastyumrun.log
+javaversion_log: /home/prevalidation/javaversion.log
 
 
 #local_ping_log: /var/log/localprevalidation/ping.log
