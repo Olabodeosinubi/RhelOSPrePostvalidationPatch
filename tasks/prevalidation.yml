@@ -6,7 +6,7 @@
 - action: ping 
 
 - name: Java Version
-  shell: echo $(hostname) for $(date);java -version >> echo $(hostname) for $(date) {{javaversion_log}}
+  shell: echo $(hostname) >> {{javaversion_log}};for $(date);java -version >> {{javaversion_log}}
 
 - name: Java Version
   shell: echo $(hostname) for $(date);java -version 2>&1
@@ -15,7 +15,7 @@
 - debug: var=ps.stdout_lines
 
 - name: Server Uptime
-  shell: echo $(hostname) for $(date);uptime >> echo $(hostname) for $(date) {{uptime_log}}
+  shell: echo $(hostname) >> {{uptime_log}};for $(date);uptime >> {{uptime_log}}
 
 - name: Server Uptime
   shell: echo $(hostname) for $(date);uptime
