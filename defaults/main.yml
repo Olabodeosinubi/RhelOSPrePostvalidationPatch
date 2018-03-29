@@ -1,18 +1,18 @@
 ---
 # defaults file for rhelprepatch
-uptime_log: /home/prevalidation/uptime.log
-route_log: /home/prevalidation/route.log
-version_log: /home/prevalidation/version.log
-mem_swap_log: /home/prevalidation/memswap.log
-free_disk_log:  /home/prevalidation/freediskspace.log
-used_disk_log: /home/prevalidation/usediskspace.log
-file_system_log: /home/prevalidation/filesystemsize.log
-fstab_content_log: /home/prevalidation/fstabcontent.log
-mount_log: /home/prevalidation/mount.log
-kernel_log: /home/prevalidation/kernel.log
-update_check_log: /home/prevalidation/updatecheck.log
-last_yumrun_log: /home/prevalidation/lastyumrun.log
-javaversion_log: /home/prevalidation/javaversion.log
+uptime_log: /mnt/nfs/var/nfsshare/prevalidation/uptime.log
+route_log: /mnt/nfs/var/nfsshare/prevalidation/route.log
+version_log: /mnt/nfs/var/nfsshare/prevalidation/version.log
+mem_swap_log: /mnt/nfs/var/nfsshare/prevalidation/memswap.log
+free_disk_log:  /mnt/nfs/var/nfsshare/prevalidation/freediskspace.log
+used_disk_log: /mnt/nfs/var/nfsshare/prevalidation/usediskspace.log
+file_system_log: /mnt/nfs/var/nfsshare/prevalidation/filesystemsize.log
+fstab_content_log: /mnt/nfs/var/nfsshare/prevalidation/fstabcontent.log
+mount_log: /mnt/nfs/var/nfsshare/prevalidation/mount.log
+kernel_log: /mnt/nfs/var/nfsshare/prevalidation/kernel.log
+update_check_log: /mnt/nfs/var/nfsshare/prevalidation/updatecheck.log
+last_yumrun_log: /mnt/nfs/var/nfsshare/prevalidation/lastyumrun.log
+javaversion_log: /mnt/nfs/var/nfsshare/prevalidation/javaversion.log
 
 
 #local_ping_log: /var/log/localprevalidation/ping.log
