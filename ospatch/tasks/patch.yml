@@ -1,0 +1,30 @@
+---
+# OS Patch Process
+- name: Creat Log Directory
+  file: path=/var/log/patch state=directory
+     
+- name: upgrade all packages
+  yum: name='*' state=latest
+  register: ps
+  
+- debug: var=ps.stdout_lines
+
+- name: Check Grub.conf file
+  shell: cat /etc/grub.conf > /var/log/patch/grubconf.log
+  become: true
+
+- name: Patch Update
+  shell: cat /etc/grub.conf
+  become: true
+  register: ps
+          
+- debug: var=ps.stdout_lines
+         
+- name: Check if Reboot Required after Kernel Update
+  shell: KERNEL_NEW=$(rpm -q –last kernel |head -1 | awk ‘{print $1}’ | sed ‘s/kernel-//’); KERNEL_NOW=$(uname -r); if [[ $KERNEL_NEW != $KERNEL_NOW ]]; then echo “reboot_needed”; else echo “reboot_not_needed”; fi
+  ignore_errors: true
+  register: reboot_required
+           
+- name: Reboot
+  shell: reboot
+  become: true
