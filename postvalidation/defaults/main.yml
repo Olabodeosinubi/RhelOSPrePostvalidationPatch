@@ -1,0 +1,29 @@
+---
+# defaults file for rhelpostpatch
+post_uptime_log: /mnt/nfs/var/nfsshare/postvalidation/uptime.log
+post_route_log: /mnt/nfs/var/nfsshare/postvalidation/route.log
+post_version_log: /mnt/nfs/var/nfsshare/postvalidation/version.log
+post_mem_swap_log: /mnt/nfs/var/nfsshare/postvalidation/memswap.log
+post_file_system_log: /mnt/nfs/var/nfsshare/postvalidation/filesystemsize.log
+post_fstab_content_log: /mnt/nfs/var/nfsshare/postvalidation/fstabcontent.log
+post_mount_log: /mnt/nfs/var/nfsshare/postvalidation/mount.log
+kernel_log: /mnt/nfs/var/nfsshare/prevalidation/kernel.log
+post_kernel_log: /mnt/nfs/var/nfsshare/postvalidation/kernel.log
+post_update_check_log: /mnt/nfs/var/nfsshare/postvalidation/updatecheck.log
+post_interface_log: /mnt/nfs/var/nfsshare/postvalidation/interface.log
+post_javaversion_log: /mnt/nfs/var/nfsshare/postvalidation/javaversion.log
+javaversion_log: /mnt/nfs/var/nfsshare/prevalidation/javaversion.log
+version_log: /mnt/nfs/var/nfsshare/prevalidation/version.log
+
+
+#local_post_ping_log: /var/log/localpostvalidation/ping.log
+#local_post_uptime_log: /var/log/localpostvalidation/uptime.log
+#local_post_route_log: /var/log/localpostvalidation/route.log
+#local_post_version_log: /var/log/localpostvalidation/version.log
+#local_post_mem_swap_log: /var/log/localpostvalidation/memswap.log
+#local_post_file_system_log: /var/log/localpostvalidation/filesystemsize.log
+#local_post_fstab_content_log: /var/log/localpostvalidation/fstabcontent.log
+#local_post_mount_log: /var/log/localpostvalidation/mount.log
+#local_post_kernel_log: /var/log/localpostvalidation/kernel.log
+#local_post_update_check_log: /var/log/localpostvalidation/updatecheck.log
+#local_post_interface_log: /var/log/localpostvalidation/interface.log
