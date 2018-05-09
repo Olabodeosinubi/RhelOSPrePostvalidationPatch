@@ -1,6 +1,5 @@
 ---
-# Rhel Postvalidation Process
-# uncomment the local_action: if you are running this playbook on cli.
+# Rhel Postvalidation Process. uncomment the local_action: if you are running this playbook on cli.
 - name: Creates Directory
   file: path=/mnt/nfs/var/nfsshare/postvalidation state=directory
 
