@@ -23,7 +23,7 @@
             Rules:
               - Conditions:
                   - Field: path-pattern #"{{ field }}" #path-pattern
-                    Values: "{{ values }}"
+                    Values: #"{{ values }}"
                       - '/test'
                 Priority: '1' #"{{ priority }}" # '1'
                 Actions:
