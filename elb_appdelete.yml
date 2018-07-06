@@ -1,0 +1,8 @@
+---
+# Delete ELBS
+- hosts: localhost
+  tasks:
+
+    - elb_application_lb:
+        name: alb-test
+        state: absent

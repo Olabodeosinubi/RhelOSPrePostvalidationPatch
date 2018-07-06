@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create EC2 instances
+      ec2:
+        key_name: Mykey
+        instance_type: t2.micro
+        image: ami-6871a115
+        region: us-east-1
+        group_id:
+          - sg-d63f74b2
+          - sg-f3673297
+        wait: yes
+        instance_tags:
+          application: Mykey
+        exact_count: 2
+        count_tag:
+          application: Mykey
+      register: ec2_instances
