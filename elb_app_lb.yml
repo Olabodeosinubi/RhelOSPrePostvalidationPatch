@@ -1,5 +1,5 @@
 # Create an ALB with listeners and rules
-- hosts: all
+- hosts: localhost
 #- name: Create elb application lb
   tasks:
     - elb_application_lb:
