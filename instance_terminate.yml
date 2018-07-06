@@ -4,6 +4,6 @@
     - name: Terminate instances
       ec2:
         state: absent
-        instance_ids: i-049dfe46dbffbae9c
+        instance_ids: i-02290e61d4c6c5b85
         region: us-east-1
         wait: True

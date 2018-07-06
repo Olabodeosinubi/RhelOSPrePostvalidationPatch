@@ -5,6 +5,7 @@
       ec2:
         key_name: Mykey
         instance_type: t2.micro
+        instance_profile_name: MyEc2Server
         image: ami-6871a115
         region: us-east-1
         group_id:
@@ -17,6 +18,9 @@
         count_tag:
           application: Mykey
         instance_tags: 
-          name: MyEc2Server  
+          name: MyEc2Server 
+          sponsor: Olabode Osinubi
+          BuiltBy: "Ansible"
+          ManagedBy: "Ansible"          
       register: ec2_instances
         
