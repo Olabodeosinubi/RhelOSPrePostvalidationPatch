@@ -2,31 +2,31 @@
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        name: "{{ name }}" #alb-lb
-        region: "{{ region }}" #us-east-1
-        subnets: "{{ subnets }}"
-         # - subnet-03bec374
-         # - subnet-e0d163ec
-        security_groups: "{{ security_groups }}"
-          #- sg-d63f74b2
-          #- olabode
-        scheme: "{{ scheme }}" #internal
+        name: alb-lb #"{{ name }}"
+        region: us-east-1 #"{{ region }}" #
+        subnets: #"{{ subnets }}"
+          - subnet-03bec374
+          - subnet-e0d163ec
+        security_groups: #"{{ security_groups }}"
+          - sg-d63f74b2
+          - olabode
+        scheme: internal #"{{ scheme }}" #
         listeners:
-          - Protocol: "{{ protocol }}" #HTTP
-            Port: "{{ port }}" #80
+          - Protocol: HTTP #"{{ protocol }}" #
+            Port: 80 #"{{ port }}" #80
             DefaultActions:
-              - Type: "{{ type }}" #forward
-                TargetGroupName: "{{ test }}" #test
+              - Type: forward #"{{ type }}" #forward
+                TargetGroupName: test #"{{ test }}" #test
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
             Rules:
               - Conditions:
-                  - Field: "{{ field }}" #path-pattern
+                  - Field: path-pattern #"{{ field }}" #path-pattern
                     Values: "{{ values }}"
-                     # - '/test'
-                Priority: "{{ priority }}" # '1'
+                      - '/test'
+                Priority: '1' #"{{ priority }}" # '1'
                 Actions:
-                  - TargetGroupName: "{{ tergetgroupname }}" #test
-                    Type: "{{ type }}" #forward
-        state: "{{ state }}" #present
+                  - TargetGroupName: test #"{{ tergetgroupname }}" #test
+                    Type: forward #"{{ type }}" #forward
+        state: present #"{{ state }}" #present
