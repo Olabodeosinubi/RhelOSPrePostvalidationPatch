@@ -13,7 +13,10 @@
         wait: yes
         instance_tags:
           application: Mykey
-        exact_count: 2
+        exact_count: 1
         count_tag:
           application: Mykey
+        instance_tags: 
+          name: MyEc2Server  
       register: ec2_instances
+        
