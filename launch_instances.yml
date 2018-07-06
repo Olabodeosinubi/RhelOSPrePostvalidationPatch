@@ -17,7 +17,7 @@
         count_tag:
           application: Mykey
         instance_tags: 
-          name: MyEc2Server1, MyEc2Server2 
+          name: MyEc2Server1
           sponsor: Olabode Osinubi
           BuiltBy: "Ansible"
           ManagedBy: "Ansible"          
