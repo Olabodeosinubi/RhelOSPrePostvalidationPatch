@@ -1,0 +1,32 @@
+# Create an ALB with listeners and rules
+- hosts: localhost
+  tasks:
+    - elb_application_lb:
+        name: "{{ name }}" #alb-lb
+        region: "{{ region }}" #us-east-1
+        subnets: "{{ subnets }}"
+         # - subnet-03bec374
+         # - subnet-e0d163ec
+        security_groups: "{{ security_groups }}"
+          #- sg-d63f74b2
+          #- olabode
+        scheme: "{{ scheme }}" #internal
+        listeners:
+          - Protocol: "{{ protocol }}" #HTTP
+            Port: "{{ port }}" #80
+            DefaultActions:
+              - Type: "{{ type }}" #forward
+                TargetGroupName: "{{ test }}" #test
+#            Certificates:
+#              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
+#            SslPolicy: ELBSecurityPolicy-2015-05
+            Rules:
+              - Conditions:
+                  - Field: "{{ field }}" #path-pattern
+                    Values: "{{ values }}"
+                     # - '/test'
+                Priority: "{{ priority }}" # '1'
+                Actions:
+                  - TargetGroupName: "{{ tergetgroupname }}" #test
+                    Type: "{{ type }}" #forward
+        state: "{{ state }}" #present
