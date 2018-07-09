@@ -9,7 +9,7 @@
         region: us-east-1
         group_id:
           - sg-d63f74b2
-          - sg-f3673297
+          - olabode
         wait: yes
         instance_tags:
           application: AppServer
