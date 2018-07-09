@@ -9,7 +9,7 @@
           - subnet-e0d163ec
         security_groups: #"{{ security_groups }}"
           - sg-d63f74b2
-          - olabode
+          - sg-f3673297
         scheme: internal #"{{ scheme }}" #
         listeners:
           - Protocol: HTTP #"{{ protocol }}" #
