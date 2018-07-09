@@ -12,12 +12,12 @@
           - sg-f3673297
         wait: yes
         instance_tags:
-          application: Mykey
+          application: AppServer
         exact_count: 2
         count_tag:
-          application: Mykey
+          application: AppServer
         instance_tags: 
-          name: MyEc2Server1
+          name: MyEc2Server
           sponsor: Olabode Osinubi
           BuiltBy: "Ansible"
           ManagedBy: "Ansible"          
