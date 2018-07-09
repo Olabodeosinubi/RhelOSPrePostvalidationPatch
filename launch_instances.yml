@@ -17,8 +17,8 @@
         count_tag:
           application: AppServer
         instance_tags: 
-          name: MyEc2Server
-          sponsor: Olabode Osinubi
+          Name: MyEc2Server
+          Sponsor: Olabode Osinubi
           BuiltBy: "Ansible"
           ManagedBy: "Ansible"          
       register: ec2_instances
