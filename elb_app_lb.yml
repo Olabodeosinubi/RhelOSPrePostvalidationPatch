@@ -2,15 +2,11 @@
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        name: alb-lb
-        region: us-east-1
-        subnets:
-          - subnet-03bec374
-          - subnet-e0d163ec
-        security_groups:
-          - sg-d63f74b2
-          - sg-f3673297
-        scheme: internal
+        name: "{{ name }}"
+        region: "{{ region }}"
+        subnets: "{{ subnets }}"
+        seurity_groups: "{{ security_groups }}"
+        scheme: "{{ scheme }}"internal
         listeners:
           - Protocol: HTTP
             Port: 80
