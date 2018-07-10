@@ -2,15 +2,15 @@
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        Name: "{{ name }}"
+        name: "{{ name }}"
         region: us-east-1
-        Subnets:
+        subnets:
           - subnet-03bec374
           - subnet-e0d163ec
-        Security_groups:
+        security_groups:
           - sg-d63f74b2
           - olabode
-        Scheme: internal
+        scheme: internal
         listeners:
           - Protocol: HTTP 
             Port: 80 
