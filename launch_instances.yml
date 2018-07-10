@@ -5,21 +5,21 @@
       ec2:
         key_name: "{{ key_name }}" # Mykey
         instance_type: "{{ instance_type }}" #t2.micro
-        image: ami-6871a115
-        region: us-east-1
-        group_id:
-          - sg-d63f74b2
-          - sg-f3673297
-        wait: yes
+        image: "{{ image }}" #ami-6871a115
+        region: "{{ region }}" #us-east-1
+        group_id: "{{ group_id }}"
+#          - sg-d63f74b2
+#          - sg-f3673297
+        wait: "{{ wait }}" #yes
         instance_tags:
-          application: AppServer
-        exact_count: 2
+          application: "{{ application }}" #AppServer
+        exact_count: "{{ exact_count }}" #2
         count_tag:
           application: AppServer
         instance_tags: 
-          Name: MyEc2Server
-          Sponsor: Olabode Osinubi
-          BuiltBy: "Ansible"
-          ManagedBy: "Ansible"          
-      register: ec2_instances
+          Name: "{{ Name }}" #MyEc2Server
+          Sponsor: "{{ Sponsor }}" #Olabode Osinubi
+          BuiltBy: "{{ BuiltBy }}" #"Ansible"
+          ManagedBy: "{{ ManageBy }}" #"Ansible"          
+      register: "{{ register }}" #ec2_instances
         
