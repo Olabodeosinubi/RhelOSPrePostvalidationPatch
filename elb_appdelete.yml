@@ -3,5 +3,5 @@
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        name: "{{ albnames }}"
-        state: "{{ state }}"
+        name: "{{ alb_name }}"
+        state: "{{ alb_state }}"
