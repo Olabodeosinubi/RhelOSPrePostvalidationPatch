@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        name: alb-lb #"{{ name }}"
+        name: "{{ name }}"
         region: us-east-1 #"{{ region }}" #
         subnets: #"{{ subnets }}"
           - subnet-03bec374
