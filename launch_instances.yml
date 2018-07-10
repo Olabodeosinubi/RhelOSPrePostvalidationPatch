@@ -18,6 +18,6 @@
           Name: "{{ Name }}" #MyEc2Server
           Sponsor: "{{ Sponsor }}" #Olabode Osinubi
           BuiltBy: "{{ BuiltBy }}" #"Ansible"
-          ManagedBy: "{{ ManageBy }}" #"Ansible"          
+          ManagedBy: "{{ ManagedBy }}" #"Ansible"          
       register: "{{ register }}" #ec2_instances
         
