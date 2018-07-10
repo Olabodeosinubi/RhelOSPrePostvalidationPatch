@@ -3,30 +3,30 @@
   tasks:
     - elb_application_lb:
         name: "{{ name }}"
-        region: us-east-1 #"{{ region }}" #
-        subnets: #"{{ subnets }}"
+        region: us-east-1
+        subnets:
           - subnet-03bec374
           - subnet-e0d163ec
-        security_groups: #"{{ security_groups }}"
+        security_groups:
           - sg-d63f74b2
           - sg-f3673297
-        scheme: internal #"{{ scheme }}" #
+        scheme: internal
         listeners:
-          - Protocol: HTTP #"{{ protocol }}" #
-            Port: 80 #"{{ port }}" #80
+          - Protocol: HTTP 
+            Port: 80 
             DefaultActions:
-              - Type: forward #"{{ type }}" #forward
-                TargetGroupName: test #"{{ test }}" #test
+              - Type: forward 
+                TargetGroupName: test
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
-            Rules:
-              - Conditions:
-                  - Field: path-pattern #"{{ field }}" #path-pattern
-                    Values: #"{{ values }}"
-                      - '/test'
-                Priority: '1' #"{{ priority }}" # '1'
-                Actions:
-                  - TargetGroupName: test #"{{ tergetgroupname }}" #test
-                    Type: forward #"{{ type }}" #forward
-        state: present #"{{ state }}" #present
+            # Rules:
+              # - Conditions:
+                  # - Field: path-pattern
+                    # Values: 
+                      # - '/test'
+                # Priority: '1'
+                # Actions:
+                  # - TargetGroupName: test
+                    # Type: forward 
+        state: present 
