@@ -7,9 +7,9 @@
         subnets:
           - subnet-4182396a
           - subnet-ddac3c84
-        security_groups: #"{{ security_groups }}"
-          - sg-d63f74b2
-          - sg-f3673297
+ #       security_groups: #"{{ security_groups }}"
+ #         - sg-d63f74b2
+ #         - sg-f3673297
 #        scheme: internal
         listeners:
           - Protocol: TCP
