@@ -2,7 +2,6 @@
 # Delete ELBS
 - hosts: localhost
   tasks:
-
     - elb_application_lb:
         name: "{{albnames}}"
         state: absent
