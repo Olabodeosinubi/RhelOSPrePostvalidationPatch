@@ -6,7 +6,7 @@
         region: "{{ region }}"
         subnets: "{{ subnets }}"
         seurity_groups: "{{ security_groups }}"
-        scheme: "{{ scheme }}"internal
+        scheme: "{{ scheme }}"
         listeners:
           - Protocol: HTTP
             Port: 80
