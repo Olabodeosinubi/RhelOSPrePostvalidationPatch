@@ -5,7 +5,7 @@
         name: "{{ name }}"
         region: "{{ region }}"
         subnets: "{{ subnets }}"
-        seurity_groups: "{{ security_groups }}"
+        security_groups: "{{ security_groups }}"
         scheme: "{{ scheme }}"
         listeners:
           - Protocol: HTTP
