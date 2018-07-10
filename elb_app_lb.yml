@@ -1,32 +1,32 @@
-# Create an ALB with listeners and rules
+---
 - hosts: localhost
   tasks:
     - elb_application_lb:
-        name: "{{ name }}"
+        name: alb-lb
         region: us-east-1
         subnets:
           - subnet-03bec374
           - subnet-e0d163ec
         security_groups:
           - sg-d63f74b2
-          - olabode
+          - sg-f3673297
         scheme: internal
         listeners:
-          - Protocol: HTTP 
-            Port: 80 
+          - Protocol: HTTP
+            Port: 80
             DefaultActions:
-              - Type: forward 
+              - Type: forward
                 TargetGroupName: test
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
-            # Rules:
-              # - Conditions:
-                  # - Field: path-pattern
-                    # Values: 
-                      # - '/test'
-                # Priority: '1'
-                # Actions:
-                  # - TargetGroupName: test
-                    # Type: forward 
-        state: present 
+            Rules:
+              - Conditions:
+                  - Field: path-pattern
+                    Values:
+                      - '/test'
+                Priority: '1'
+                Actions:
+                  - TargetGroupName: test
+                    Type: forward
+        state: present
