@@ -3,21 +3,21 @@
   tasks:
     - name: Create EC2 instances
       ec2:
-        key_name: "{{ key_name }}" # Mykey
-        instance_type: "{{ instance_type }}" #t2.micro
-        image: "{{ image }}" #ami-6871a115
-        region: "{{ region }}" #us-east-1
+        key_name: "{{ key_name }}" 
+        instance_type: "{{ instance_type }}" 
+        image: "{{ image }}" 
+        region: "{{ region }}" 
         group_id: "{{ group_id }}"
-        wait: "{{ wait }}" #yes
+        wait: "{{ wait }}" 
         instance_tags:
-          application: "{{ application }}" #AppServer
-        exact_count: "{{ exact_count }}" #2
+          application: "{{ application }}" 
+        exact_count: "{{ exact_count }}" 
         count_tag:
-          application: "{{ application }}" #AppServer
+          application: "{{ application }}" 
         instance_tags: 
-          Name: "{{ Name }}" #MyEc2Server
-          Sponsor: "{{ Sponsor }}" #Olabode Osinubi
-          BuiltBy: "{{ BuiltBy }}" #"Ansible"
-          ManagedBy: "{{ ManagedBy }}" #"Ansible"          
-      register: "{{ register }}" #ec2_instances
+          Name: "{{ Name }}" 
+          Sponsor: "{{ Sponsor }}" 
+          BuiltBy: "{{ BuiltBy }}" 
+          ManagedBy: "{{ ManagedBy }}"          
+      register: "{{ register }}" 
         
