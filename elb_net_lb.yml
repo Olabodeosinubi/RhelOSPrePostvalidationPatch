@@ -7,7 +7,7 @@
         subnets:
           - subnet-4182396a
           - subnet-ddac3c84
-         listeners:
+        listeners:
           - Protocol: TCP
             Port: 80
             DefaultActions:
