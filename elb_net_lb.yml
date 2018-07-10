@@ -7,7 +7,7 @@
         subnets:
           - subnet-4182396a
           - subnet-ddac3c84
-        scheme: internal
+#        scheme: internal
         listeners:
           - Protocol: TCP
             Port: 80
