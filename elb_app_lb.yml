@@ -1,4 +1,3 @@
----
 - hosts: localhost
   tasks:
     - elb_application_lb:
@@ -8,21 +7,21 @@
         security_groups: "{{ security_groups }}"
         scheme: "{{ scheme }}"
         listeners:
-          - Protocol: HTTP
-            Port: 80
+          - Protocol: "{{ Protocol }}"
+            Port: "{{ Port }}"
             DefaultActions:
-              - Type: forward
+              - Type: "{{ Type }}"
                 TargetGroupName: test
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
             Rules:
               - Conditions:
-                  - Field: path-pattern
-                    Values:
-                      - '/test'
-                Priority: '1'
+                  - Field: "{{ Field }}"
+                    Values: "{{ Values }}"
+                Priority: "{{ Priority }}"
                 Actions:
-                  - TargetGroupName: test
-                    Type: forward
-        state: present
+                  - TargetGroupName: "{{ TargetGroupName }}"
+                    Type: "{{ Type }}"
+        state: "{{ state }}"
+
