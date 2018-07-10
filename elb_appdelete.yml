@@ -4,5 +4,5 @@
   tasks:
 
     - elb_application_lb:
-        name: alb-test
+        name: "{{ albnames }}"
         state: absent
