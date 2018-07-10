@@ -3,7 +3,7 @@
   tasks:
     - elb_network_lb:
         name: elbnetwork
-        region: us-east-1
+#        region: us-east-1
         subnets:
           - subnet-4182396a
           - subnet-ddac3c84
