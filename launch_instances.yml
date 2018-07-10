@@ -8,14 +8,12 @@
         image: "{{ image }}" #ami-6871a115
         region: "{{ region }}" #us-east-1
         group_id: "{{ group_id }}"
-#          - sg-d63f74b2
-#          - sg-f3673297
         wait: "{{ wait }}" #yes
         instance_tags:
           application: "{{ application }}" #AppServer
         exact_count: "{{ exact_count }}" #2
         count_tag:
-          application: AppServer
+          application: "{{ application }}" #AppServer
         instance_tags: 
           Name: "{{ Name }}" #MyEc2Server
           Sponsor: "{{ Sponsor }}" #Olabode Osinubi
