@@ -15,13 +15,13 @@
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
-            Rules:
-              - Conditions:
-                  - Field: "{{ Field }}"
-                    Values: "{{ Values }}"
-                Priority: "{{ Priority }}"
-                Actions:
-                  - TargetGroupName: "{{ TargetGroupName }}"
-                    Type: "{{ Type }}"
+            # Rules:
+              # - Conditions:
+                  # - Field: "{{ Field }}"
+                    # Values: "{{ Values }}"
+                # Priority: "{{ Priority }}"
+                # Actions:
+                  # - TargetGroupName: "{{ TargetGroupName }}"
+                    # Type: "{{ Type }}"
         state: "{{ state }}"
 
