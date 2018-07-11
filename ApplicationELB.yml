@@ -6,12 +6,12 @@
         subnets: "{{ subnets }}"
         security_groups: "{{ security_groups }}"
         scheme: "{{ scheme }}"
-        listeners:
-          - Protocol: "{{ Protocol }}"
-            Port: "{{ Port }}"
-            DefaultActions:
-              - Type: "{{ Type }}"
-                TargetGroupName: "{{ TargetGroupName }}"
+        # listeners:
+          # - Protocol: "{{ Protocol }}"
+            # Port: "{{ Port }}"
+            # DefaultActions:
+              # - Type: "{{ Type }}"
+                # TargetGroupName: "{{ TargetGroupName }}"
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
