@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - elb_network_lb:
+        name: "{{ name }}" 
+        region: "{{ region }}"
+        subnets: "{{ subnets }}"
+        scheme: "{{ scheme }}"
+        listeners:
+          - Protocol: "{{ Protocol }}"
+            Port: "{{ Port }}"
+            DefaultActions:
+              - Type: "{{ Type }}"
+                TargetGroupName: "{{ TargetGroupName }}"
+        state: "{{ state }}"
