@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+    - elb_application_lb:
+        name: "{{ name }}"
+        region: "{{ region }}"
+        subnets: "{{ subnets }}"
+        security_groups: "{{ security_groups }}"
+        scheme: "{{ scheme }}"
+        listeners:
+          - Protocol: "{{ Protocol }}"
+            Port: "{{ Port }}"
+            DefaultActions:
+              - Type: "{{ Type }}"
+                TargetGroupName: "{{ TargetGroupName }}"
+        state: "{{ state }}"
