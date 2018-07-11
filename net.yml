@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+    - elb_network_lb:
+        name: ELB-network
+        region: us-east-1
+        subnets:
+          - subnet-4182396a
+          - subnet-ddac3c84
+        scheme: internal
+        listeners:
+          - Protocol: TCP
+            Port: 80
+            DefaultActions:
+              - Type: forward
+                TargetGroupName: Tester
+        tags:
+          Name: ELB-network
+          Sponsor: Olabode Osinubi
+          BuiltBy: "Ansible"
+          ManagedBy: "Ansible"
+        state: present
+
+    - name: See if ELB already exists
+      ec2_elb_facts:
+        names: ELB-network
+        region: us-east-1
+      register: provision_elb_elblist
+
+    - debug: var=provision_elb_elblist.stdout_lines
