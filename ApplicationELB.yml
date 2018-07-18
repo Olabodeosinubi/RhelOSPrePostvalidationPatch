@@ -15,7 +15,7 @@
           - Id: "{{ Id }}"
             Port: "{{ Port }}"
         tags:
-            Name: "{{ TargetName }}"
+            Name: "{{ Name }}"
             Project: "{{ Project }}"
             Environment: "{{ Environment }}"
             Sponsor: "{{ Sponsor }}"
