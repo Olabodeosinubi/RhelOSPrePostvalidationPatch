@@ -6,6 +6,7 @@
         protocol: "{{ protocol }}"
         port: "{{ Port }}"
         vpc_id: "{{ vpc_id }}"
+        region: "{{ region }}"
         health_check_path: "{{ health_check_path }}"
         successful_response_codes: "{{ successful_response_codes }}"
         targets:
