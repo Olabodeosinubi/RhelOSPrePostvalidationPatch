@@ -2,10 +2,17 @@
 - hosts: localhost
   tasks: 
     - elb_application_lb:
+        access_logs_enabled: yes
+        access_logs_s3_bucket: olabode
+        access_logs_s3_prefix: mylogs
         name: elb-apps
         region: us-east-1
-        subnets: subnet-03bec374,subnet-4182396a
-        security_groups: sg-d63f74b2,sg-f3673297
+        subnets: 
+          - subnet-03bec374
+          - subnet-4182396a
+        security_groups: 
+          - sg-d63f74b2 
+          - sg-f3673297
         scheme: internal
         listeners:
           - Protocol: HTTP
@@ -33,9 +40,6 @@
             Environment: POC
             Sponsor: Olabode Osinubi
             CreatedBy: Olabode Osinubi
-        access_logs_enabled: yes
-        access_logs_s3_bucket: olabode
-        access_logs_s3_prefix: mylogs
         state: present
 
     - ec2_elb_facts:
