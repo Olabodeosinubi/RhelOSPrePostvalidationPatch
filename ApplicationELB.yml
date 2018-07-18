@@ -2,25 +2,46 @@
 - hosts: localhost
   tasks:
     - elb_target_group:
-        name: "{{ name }}"
-        protocol: "{{ protocol }}"
-        port: "{{ port }}"
-        vpc_id: "{{ vpc_id }}"
-        region: "{{ region }}"
-        health_check_path: "{{ health_check_path }}"
-        successful_response_codes: "{{ successful_response_codes }}"
+        name: mytarget
+        protocol: http
+        port: 1080
+        vpc_id: vpc-08a1816d
+        region: us-east-1
+        health_check_path: /
+        successful_response_codes: "200,250-260"
         targets:
-          - Id: "{{ Id }}"
-            Port: "{{ Port }}"
-          - Id: "{{ Id }}"
-            Port: "{{ Port }}"
+          - Id: i-08437d4eff1c2f6cb
+            Port: 80
+          - Id: i-0ecad15ec7a9fb305
+            Port: 80
         tags:
-            Name: "{{ Name }}"
-            Project: "{{ Project }}"
-            Environment: "{{ Environment }}"
-            Sponsor: "{{ Sponsor }}"
-            CreatedBy: "{{ CreatedBy }}"
-        state: "{{ state }}"
+            Name: mytarget
+            Project: Oshie
+            Environment: POC
+            Sponsor: Olabode Osinubi
+            CreatedBy: Olabode Osinubi
+        state: present
+
+    # - elb_target_group:
+        # name: "{{ name }}"
+        # protocol: "{{ protocol }}"
+        # port: "{{ port }}"
+        # vpc_id: "{{ vpc_id }}"
+        # region: "{{ region }}"
+        # health_check_path: "{{ health_check_path }}"
+        # successful_response_codes: "{{ successful_response_codes }}"
+        # targets:
+          # - Id: "{{ Id }}"
+            # Port: "{{ Port }}"
+          # - Id: "{{ Id }}"
+            # Port: "{{ Port }}"
+        # tags:
+            # Name: "{{ Name }}"
+            # Project: "{{ Project }}"
+            # Environment: "{{ Environment }}"
+            # Sponsor: "{{ Sponsor }}"
+            # CreatedBy: "{{ CreatedBy }}"
+        # state: "{{ state }}"
           
     # - elb_application_lb:
         # name: "{{ name }}"
