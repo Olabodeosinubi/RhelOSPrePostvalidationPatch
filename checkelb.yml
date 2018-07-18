@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+# "Workaround start: See if ELB already exists"
+    - ec2_elb_facts:
+        names: "{{ elbname) }}"
+        region: "{{ aws_region }}"
+      register: elblist
