@@ -8,7 +8,7 @@
         vpc_id: vpc-08a1816d
         region: us-east-1
         health_check_path: /
-        successful_response_codes: 200,250-260
+        successful_response_codes: 200 
         targets:
           - Id: i-08437d4eff1c2f6cb
             Port: 80
