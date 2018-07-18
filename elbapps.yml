@@ -29,8 +29,8 @@
 #                Actions:
 #                  - TargetGroupName: mytarget
 #                    Type: forward
-        ignore_errors: yes
-        changed_when: false
+#        ignore_errors: yes
+#        changed_when: false
         tags:
             Name: elb-apps
             Project: Personal
