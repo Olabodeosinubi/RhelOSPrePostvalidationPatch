@@ -15,25 +15,25 @@
           - Id: "{{ Id }}"
             Port: "{{ Port }}"
         tags:
-            TargetName: "{{ TargetName }}"
+            Name: "{{ TargetName }}"
             Project: "{{ Project }}"
             Environment: "{{ Environment }}"
             Sponsor: "{{ Sponsor }}"
             CreatedBy: "{{ CreatedBy }}"
         state: "{{ state }}"
           
-    - elb_application_lb:
-        name: "{{ name }}"
-        region: "{{ region }}"
-        subnets: "{{ subnets }}"
-        security_groups: "{{ security_groups }}"
-        scheme: "{{ scheme }}"
-        listeners:
-          - Protocol: "{{ Protocol }}"
-            Port: "{{ Port }}"
-            DefaultActions:
-              - Type: "{{ Type }}"
-                TargetGroupName: "{{ TargetGroupName }}"
+    # - elb_application_lb:
+        # name: "{{ name }}"
+        # region: "{{ region }}"
+        # subnets: "{{ subnets }}"
+        # security_groups: "{{ security_groups }}"
+        # scheme: "{{ scheme }}"
+        # listeners:
+          # - Protocol: "{{ Protocol }}"
+            # Port: "{{ Port }}"
+            # DefaultActions:
+              # - Type: "{{ Type }}"
+                # TargetGroupName: "{{ TargetGroupName }}"
 #            Certificates:
 #              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #            SslPolicy: ELBSecurityPolicy-2015-05
@@ -45,18 +45,18 @@
                 # Actions:
                   # - TargetGroupName: "{{ TargetGroupName }}"
                     # Type: "{{ Type }}"
-        tags:
-            ELBName: "{{ ELBName }}"
-            Proj: "{{ Proj }}"
-            Env: :{{ Env }}"
-            Sponse: "{{ Sponse }}"
-            BuildBy: "{{ BuildBy }}"
-        access_logs_enabled: "{{ access_logs_enabled }}"
-        access_logs_s3_bucket: "{{ access_logs_s3_bucket }}"
-        access_logs_s3_prefix: "{{ access_logs_s3_prefix }}"
-        state: "{{ state }}"
+        # tags:
+            # ELBName: "{{ ELBName }}"
+            # Proj: "{{ Proj }}"
+            # Env: :{{ Env }}"
+            # Sponse: "{{ Sponse }}"
+            # BuildBy: "{{ BuildBy }}"
+        # access_logs_enabled: "{{ access_logs_enabled }}"
+        # access_logs_s3_bucket: "{{ access_logs_s3_bucket }}"
+        # access_logs_s3_prefix: "{{ access_logs_s3_prefix }}"
+        # state: "{{ state }}"
                     
-    - ec2_elb_facts:
-        names: "{{ elbname) }}"
-        region: "{{ region }}"
-      register: "{{ register }}"    
+    # - ec2_elb_facts:
+        # names: "{{ elbname) }}"
+        # region: "{{ region }}"
+      # register: "{{ register }}"    
