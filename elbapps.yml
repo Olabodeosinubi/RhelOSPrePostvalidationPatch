@@ -4,12 +4,8 @@
     - elb_application_lb:
         name: elb-apps
         region: us-east-1
-        subnets:
-          - subnet-03bec374
-          - subnet-4182396a
-        security_groups:
-          - sg-d63f74b2
-          - sg-f3673297
+        subnets: subnet-03bec374,subnet-4182396a
+        security_groups: sg-d63f74b2,sg-f3673297
         scheme: internal
         listeners:
           - Protocol: HTTP
