@@ -1,0 +1,21 @@
+---
+- elb_target_group:
+    name: mytarget2
+    protocol: http
+    port: 1081
+    vpc_id: vpc-08a1816d
+    region: us-east-1
+    health_check_path: /
+    successful_response_codes: "200,250-260"
+#    targets:
+#      - Id: i-08437d4eff1c2f6cb
+#        Port: 80
+#      - Id: i-0ecad15ec7a9fb305
+#        Port: 80
+    tags:
+        Name: mytarget2
+        Project: Oshie
+        Environment: POC
+        Sponsor: Olabode Osinubi
+        CreatedBy: Olabode Osinubi
+    state: present
