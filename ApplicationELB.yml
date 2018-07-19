@@ -1,27 +1,44 @@
 ---
 - hosts: localhost
   tasks:
-    - elb_target_group:
-        name: mytarget
-        protocol: http
-        port: 1080
-        vpc_id: vpc-08a1816d
+    - elb_application_lb:
+        name: elb-apps
         region: us-east-1
-        health_check_path: /
-        successful_response_codes: 200 
-        targets:
-          - Id: i-08437d4eff1c2f6cb
+        subnets:
+          - subnet-03bec374
+          - subnet-4182396a
+        security_groups:
+          - sg-d63f74b2
+          - sg-f3673297
+        scheme: internal
+        listeners:
+          - Protocol: HTTP
             Port: 80
-          - Id: i-0ecad15ec7a9fb305
-            Port: 80
+            DefaultActions:
+              - Type: forward
+                TargetGroupName: mytarget
+#            Certificates:
+#              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
+#            SslPolicy: ELBSecurityPolicy-2015-05
         tags:
-            Name: mytarget
-            Project: Oshie
+            Name: elb-apps
+            Project: Personal
             Environment: POC
             Sponsor: Olabode Osinubi
             CreatedBy: Olabode Osinubi
+        access_logs_enabled: yes
+        access_logs_s3_bucket: olabode
+        access_logs_s3_prefix: mylogs
         state: present
 
+    - ec2_elb_facts:
+        names: elb-apps
+        region: us-east-1
+      register: elblist
+
+# ---
+# - hosts: localhost
+  # tasks:
     # - elb_target_group:
         # name: "{{ name }}"
         # protocol: "{{ protocol }}"
@@ -55,22 +72,14 @@
             # DefaultActions:
               # - Type: "{{ Type }}"
                 # TargetGroupName: "{{ TargetGroupName }}"
-#            Certificates:
-#              - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
-#            SslPolicy: ELBSecurityPolicy-2015-05
-            # Rules:
-              # - Conditions:
-                  # - Field: "{{ Field }}"
-                    # Values: "{{ Values }}"
-                # Priority: "{{ Priority }}"
-                # Actions:
-                  # - TargetGroupName: "{{ TargetGroupName }}"
-                    # Type: "{{ Type }}"
+            # Certificates:
+              # - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
+            # SslPolicy: ELBSecurityPolicy-2015-05
         # tags:
-            # ELBName: "{{ ELBName }}"
-            # Proj: "{{ Proj }}"
-            # Env: :{{ Env }}"
-            # Sponse: "{{ Sponse }}"
+            # Name: "{{ Name }}"
+            # Project: "{{ Project }}"
+            # Environment: "{{ Environment }}"
+            # Sponsor: "{{ Sponsor }}"
             # BuildBy: "{{ BuildBy }}"
         # access_logs_enabled: "{{ access_logs_enabled }}"
         # access_logs_s3_bucket: "{{ access_logs_s3_bucket }}"
