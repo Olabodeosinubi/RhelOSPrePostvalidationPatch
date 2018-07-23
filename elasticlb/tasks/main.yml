@@ -1,0 +1,7 @@
+---
+# elbTarget group tasks
+- import_tasks: targetgroup2.yml
+- import_tasks: targetgroup.yml
+- import_tasks: elbapplication.yml
+#- import_tasks: targetgroup-terminate.yml
+#- import_tasks: elb-appterminate.yml

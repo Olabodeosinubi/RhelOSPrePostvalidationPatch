@@ -1,0 +1,88 @@
+---
+- elb_application_lb:
+    name: elb-apps
+    region: us-east-1
+    subnets:
+      - subnet-03bec374
+      - subnet-4182396a
+    security_groups:
+      - sg-d63f74b2
+      - sg-f3673297
+    scheme: internal
+    listeners:
+      - Protocol: HTTP
+        Port: 80
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: mytarget
+#        Certificates:
+#          - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
+#        SslPolicy: ELBSecurityPolicy-2015-05
+    tags:
+        Name: elb-apps
+        Project: Personal
+        Environment: POC
+        Sponsor: Olabode Osinubi
+        CreatedBy: Ansible
+    access_logs_enabled: yes
+    access_logs_s3_bucket: olabode
+    access_logs_s3_prefix: mylogs
+    state: present
+
+- ec2_elb_facts:
+    names: elb-apps
+    region: us-east-1
+  register: elblist
+
+
+# - elb_target_group:
+    # name: "{{ name }}"
+    # protocol: "{{ protocol }}"
+    # port: "{{ port }}"
+    # vpc_id: "{{ vpc_id }}"
+    # region: "{{ region }}"
+    # health_check_path: "{{ health_check_path }}"
+    # successful_response_codes: "{{ successful_response_codes }}"
+    # targets:
+      # - Id: "{{ Id }}"
+        # Port: "{{ Port }}"
+      # - Id: "{{ Id }}"
+        # Port: "{{ Port }}"
+    # tags:
+        # Name: "{{ Name }}"
+        # Project: "{{ Project }}"
+        # Environment: "{{ Environment }}"
+        # Sponsor: "{{ Sponsor }}"
+        # CreatedBy: "{{ CreatedBy }}"
+    # state: "{{ state }}"
+          
+# - elb_application_lb:
+    # name: "{{ name }}"
+    # region: "{{ region }}"
+    # subnets: "{{ subnets }}"
+    # security_groups: "{{ security_groups }}"
+    # scheme: "{{ scheme }}"
+    # listeners:
+      # - Protocol: "{{ Protocol }}"
+        # Port: "{{ Port }}"
+        # DefaultActions:
+          # - Type: "{{ Type }}"
+            # TargetGroupName: "{{ TargetGroupName }}"
+        # Certificates:
+          # - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
+        # SslPolicy: ELBSecurityPolicy-2015-05
+    # tags:
+        # Name: "{{ Name }}"
+        # Project: "{{ Project }}"
+        # Environment: "{{ Environment }}"
+        # Sponsor: "{{ Sponsor }}"
+        # BuildBy: "{{ BuildBy }}"
+    # access_logs_enabled: "{{ access_logs_enabled }}"
+    # access_logs_s3_bucket: "{{ access_logs_s3_bucket }}"
+    # access_logs_s3_prefix: "{{ access_logs_s3_prefix }}"
+    # state: "{{ state }}"
+                   
+# - ec2_elb_facts:
+    # names: "{{ elbname) }}"
+    # region: "{{ region }}"
+  # register: "{{ register }}"    

@@ -1,4 +1,0 @@
----
-# elbTarget group tasks
-- import_tasks: targetgroup2.yml
-- import_tasks: targetgroup.yml

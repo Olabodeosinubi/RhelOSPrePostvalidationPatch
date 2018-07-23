@@ -1,5 +1,4 @@
 ---
-#- name: Target group play
 - elb_target_group:
     name: mytarget
     protocol: http
@@ -18,5 +17,5 @@
         Project: Oshie
         Environment: POC
         Sponsor: Olabode Osinubi
-        CreatedBy: Olabode Osinubi
+        CreatedBy: "Ansible"
     state: present
