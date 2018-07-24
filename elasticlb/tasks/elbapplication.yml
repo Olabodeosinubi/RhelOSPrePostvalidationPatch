@@ -5,10 +5,10 @@
     subnets:
       - subnet-03bec374
       - subnet-4182396a
-    security_groups:
+    Security_groups:
       - sg-d63f74b2
       - sg-f3673297
-    scheme: internal
+    Scheme: internal
     listeners:
       - Protocol: HTTP
         Port: 80
@@ -18,8 +18,8 @@
 #        Certificates:
 #          - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #        SslPolicy: ELBSecurityPolicy-2015-05
-    tags:
-        Name: elb-apps
+    Tags:
+        Name: Elb-apps
         Project: Personal
         Environment: POC
         Sponsor: Olabode Osinubi
