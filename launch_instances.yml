@@ -20,4 +20,5 @@
           BuiltBy: "{{ BuiltBy }}" 
           ManagedBy: "{{ ManagedBy }}"          
       register: "{{ register }}" 
+      when: instance == true
         
