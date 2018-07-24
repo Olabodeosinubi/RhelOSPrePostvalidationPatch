@@ -7,16 +7,16 @@
     region: us-east-1
     health_check_path: /
     successful_response_codes: 200
-    target_type: instance
+  #  target_type: instance
     targets:
       - Id: i-0c7a413c5e34ab555 
         Port: 80
       - Id: i-0c8980f76c4db99da
         Port: 80
-    tags:
-        Name: mytarget
-        Project: Oshie
-        Environment: POC
-        Sponsor: Olabode Osinubi
-        CreatedBy: "Ansible"
+    # tags:
+        # Name: mytarget
+        # Project: Oshie
+        # Environment: POC
+        # Sponsor: Olabode Osinubi
+        # CreatedBy: "Ansible"
     state: present
