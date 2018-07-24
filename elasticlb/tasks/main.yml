@@ -1,7 +1,10 @@
 ---
 # elbTarget group tasks
-- import_tasks: targetgroup2.yml
 - import_tasks: targetgroup.yml
+  when: targetgroup == true
 - import_tasks: elbapplication.yml
-#- import_tasks: targetgroup-terminate.yml
-#- import_tasks: elb-appterminate.yml
+  when: elbapplication == true
+- import_tasks: targetgroup-terminate.yml
+  when: terminatetarget == true
+- import_tasks: elb-appterminate.yml
+  when: terminate-elb == true
