@@ -14,7 +14,7 @@
         Port: 80
         DefaultActions:
           - Type: forward
-            TargetGroupName: mytarget
+            TargetGroupName: Target
 #        Certificates:
 #          - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #        SslPolicy: ELBSecurityPolicy-2015-05
