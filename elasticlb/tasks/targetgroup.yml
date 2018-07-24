@@ -1,8 +1,8 @@
 ---
 - elb_target_group:
     name: mytarget
-    health_check_protocol: http
-    health_check_port: 1081
+    protocol: http
+    port: 81
     vpc_id: vpc-08a1816d
     region: us-east-1
     health_check_path: /
@@ -13,10 +13,10 @@
         Port: 80
       - Id: i-0c8980f76c4db99da
         Port: 80
-    # tags:
-        # Name: mytarget
-        # Project: Oshie
-        # Environment: POC
-        # Sponsor: Olabode Osinubi
-        # CreatedBy: "Ansible"
+    tags:
+        Name: mytarget
+        Project: Oshie
+        Environment: POC
+        Sponsor: Olabode Osinubi
+        CreatedBy: "Ansible"
     state: present
