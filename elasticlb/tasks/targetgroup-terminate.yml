@@ -1,5 +1,5 @@
 ---
 # Terminate ELB Target Group
-- elb_target_group:
-        name: "{{ targetgroup_name }}"
-        state: "{{ targetgroup_state }}"
+# - elb_target_group:
+        # name: "{{ targetgroup_name }}"
+        # state: "{{ targetgroup_state }}"
