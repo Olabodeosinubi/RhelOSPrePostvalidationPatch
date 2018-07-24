@@ -1,8 +1,8 @@
 ---
 - elb_target_group:
     name: mytarget
-    protocol: http
-    port: 1081
+    health_check_protocol: http
+    health_check_port: 1081
     vpc_id: vpc-08a1816d
     region: us-east-1
     health_check_path: /
