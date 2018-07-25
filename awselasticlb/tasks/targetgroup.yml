@@ -1,12 +1,12 @@
 ---
 - elb_target_group:
-    name: Newtarget
+    name: Newtarget2
     protocol: http
-    port: 81
+    port: 88
     vpc_id: vpc-08a1816d
     region: us-east-1
     health_check_path: /
-    successful_response_codes: 200
+    successful_response_codes: "200,250-260"
     target_type: instance
     targets:
       - Id: i-0c8980f76c4db99da
@@ -14,7 +14,7 @@
       - Id: i-0c091d22ddf88270d
         Port: 80
     tags:
-        Name: Newtarget
+        Name: Newtarget2
         Project: Oshie
         Environment: POC
         Sponsor: Olabode Osinubi
