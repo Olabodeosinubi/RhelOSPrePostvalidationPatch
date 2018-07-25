@@ -1,5 +1,12 @@
 ---
 - elb_target_group:
+    name: mytargetgroup
+    protocol: http
+    port: 80
+    vpc_id: vpc-08a1816d
+    state: present
+    
+- elb_target_group:
     name: mytarget
     protocol: http
     port: 81
