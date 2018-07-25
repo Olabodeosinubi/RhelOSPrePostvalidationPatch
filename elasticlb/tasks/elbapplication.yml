@@ -1,25 +1,25 @@
 ---
 - elb_application_lb:
-    name: elb-apps
+    name: elbapplication
     region: us-east-1
     subnets:
       - subnet-03bec374
       - subnet-ddac3c84
     security_groups: 
       - sg-d63f74b2
-      - sg-e47a2f80
+     # - sg-e47a2f80
     scheme: internal
     listeners:
       - Protocol: HTTP
         Port: 80
         DefaultActions:
           - Type: forward
-            TargetGroupName: mytarget
+            TargetGroupName: Newtarget
 #        Certificates:
 #          - CertificateArn: arn:aws:iam::12345678987:server-certificate/test.domain.com
 #        SslPolicy: ELBSecurityPolicy-2015-05
     tags:
-        Name: Elb-apps
+        Name: elbapplication
         Project: Personal
         Environment: POC
         Sponsor: Olabode Osinubi
@@ -30,6 +30,6 @@
     state: present
 
 - ec2_elb_facts:
-    names: elb-apps
+    names: elbapplication
     region: us-east-1
   register: elblist

@@ -1,6 +1,6 @@
 ---
 - elb_target_group:
-    name: mytarget
+    name: Newtarget
     protocol: http
     port: 81
     vpc_id: vpc-08a1816d
@@ -14,7 +14,7 @@
       - Id: i-0c091d22ddf88270d
         Port: 80
     tags:
-        Name: mytarget
+        Name: Newtarget
         Project: Oshie
         Environment: POC
         Sponsor: Olabode Osinubi
