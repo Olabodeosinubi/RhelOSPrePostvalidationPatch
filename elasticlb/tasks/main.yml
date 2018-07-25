@@ -1,6 +1,6 @@
 ---
 - import_tasks: targetgroup.yml
-  when: targetgroup == true
+  when: awstargetgroup == true
 - import_tasks: elbapplication.yml
   when: elbapplication == true
 - import_tasks: elb-appterminate.yml
