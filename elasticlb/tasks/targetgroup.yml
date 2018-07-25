@@ -9,9 +9,9 @@
     successful_response_codes: 200
   #  target_type: instance
     targets:
-      - Id: i-0c7a413c5e34ab555 
-        Port: 80
       - Id: i-0c8980f76c4db99da
+        Port: 80
+      - Id: i-0c091d22ddf88270d
         Port: 80
     tags:
         Name: mytarget
