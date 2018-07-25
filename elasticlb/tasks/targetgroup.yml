@@ -7,7 +7,7 @@
     region: us-east-1
     health_check_path: /
     successful_response_codes: 200
-  #  target_type: instance
+    target_type: instance
     targets:
       - Id: i-0c8980f76c4db99da
         Port: 80
