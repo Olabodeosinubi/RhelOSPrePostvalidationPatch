@@ -7,7 +7,7 @@
       - subnet-ddac3c84
     security_groups: 
       - sg-d63f74b2
-      - sg-f3673297
+      - sg-e47a2f80
     scheme: internal
     listeners:
       - Protocol: HTTP
