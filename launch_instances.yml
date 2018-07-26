@@ -9,16 +9,15 @@
         region: "{{ region }}" 
         group_id: "{{ group_id }}"
         wait: "{{ wait }}" 
-        instance_tags:
-          application: "{{ application }}" 
         exact_count: "{{ exact_count }}" 
         count_tag:
           application: "{{ application }}" 
-        instance_tags: 
-          Name: "{{ Name }}" 
-          Sponsor: "{{ Sponsor }}" 
-          BuiltBy: "{{ BuiltBy }}" 
-          ManagedBy: "{{ ManagedBy }}"          
+        instance_tags:
+          application: "{{ instance_tagapplication }}"        
+          Name: "{{ instance_tagName }}" 
+          Sponsor: "{{ instance_tagSponsor }}" 
+          BuiltBy: "{{ instance_tagBuiltBy }}" 
+          ManagedBy: "{{ instance_tagManagedBy }}"          
       register: "{{ register }}" 
       when: instance == true
         
