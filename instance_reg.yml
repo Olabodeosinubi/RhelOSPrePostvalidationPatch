@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - elb_target:
-        target_group_name: mytarget2
+        target_group_name: mytarget
         region: us-east-1
         target_id: i-0e53a36a464471866
 #        deregister_unused: yes
