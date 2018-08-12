@@ -4,7 +4,7 @@
     - elb_target:
         target_group_name: mytarget2
         region: us-east-1
-        target_id: i-0e53a36a464471866
+        target_id: i-0ad9d8e2e05278b82
         deregister_unused: yes
         target_port: 80
         state: absent
