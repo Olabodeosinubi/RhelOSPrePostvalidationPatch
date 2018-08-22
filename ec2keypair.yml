@@ -1,7 +1,7 @@
 ---
 - name: create a new ec2 key pair, returns generated private key
   ec2_key:
-    name: my_keypair
+    name: my_keypairing
 
 # - name: create key pair using provided key_material
   # ec2_key:
