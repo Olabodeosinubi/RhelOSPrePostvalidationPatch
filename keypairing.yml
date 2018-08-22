@@ -5,6 +5,7 @@
       ec2_key:
         name: my_keypair
         region: us-east-1
+      register: ec2_key_result
         #key_material: "{{ lookup('file', '/root/.ssh/privatekeys/id_rsa.pub') }}"
 
 # - name: create key pair using provided key_material
