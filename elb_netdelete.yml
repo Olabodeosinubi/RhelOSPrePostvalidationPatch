@@ -1,7 +1,0 @@
----
-# Remove an ELB
-- hosts: localhost
-  tasks:
-    - elb_network_lb:
-        name: "{{ nlbnames }}"
-        state: absent
