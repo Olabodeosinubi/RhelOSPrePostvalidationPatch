@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: 172.31.61.1
   tasks:
     - name: create a new ec2 key pair, returns generated private key
       ec2_key:
