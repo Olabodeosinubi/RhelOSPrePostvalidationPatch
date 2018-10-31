@@ -8,6 +8,7 @@
         image: "{{ image }}" 
         region: "{{ region }}" 
         group_id: "{{ group_id }}"
+        termination_protection: yes
         wait: "{{ wait }}" 
         exact_count: "{{ exact_count }}" 
         count_tag:
